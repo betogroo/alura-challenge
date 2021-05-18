@@ -30,7 +30,7 @@
         <v-icon size="32">mdi-magnify</v-icon>
       </v-btn>
 
-      <v-btn class="d-md-none d-xl-flex" icon dark>
+      <v-btn class="d-md-none d-xl-none" icon dark>
         <v-icon size="32">mdi-menu</v-icon>
       </v-btn>
 
