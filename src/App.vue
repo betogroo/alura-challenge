@@ -12,7 +12,7 @@ import AppBar from '@/components/layout/AppBar.vue'
 export default {
   name: 'App',
 
-  components:{
+  components: {
     AppBar
   },
 
@@ -21,3 +21,8 @@ export default {
   })
 }
 </script>
+<style>
+#app {
+  background-color: #051d3b;
+}
+</style>
