@@ -1,6 +1,6 @@
 <h1> 
  Alura Challenge
-  <img src="src/assets/logo.png" alt="vuejs" width="40" height="40"/>
+  <img src="src/assets/logo.png" alt="vuejs"/>
 </h1>
 
 ###### Feito com:
