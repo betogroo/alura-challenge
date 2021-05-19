@@ -43,7 +43,7 @@
         </v-app-bar-nav-icon>
       </template>
       <template v-else>
-        <v-avatar size="38">
+        <v-avatar size="32">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar>
         <span class="white--text pl-3">Harry</span>
@@ -64,12 +64,11 @@
       app
     >
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
+        <v-list-item v-for="item in items" :key="item.title" link class="mb-4">
+          <v-btn fab medium color="#5081FB">
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
+          </v-btn>
+          <v-list-item-content class=" menu pl-5">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -78,6 +77,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   name: 'AppBar',
@@ -85,9 +85,8 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-      { title: 'Account', icon: 'mdi-account-box' },
-      { title: 'Admin', icon: 'mdi-gavel' }
+      { title: 'Editor de Código', icon: 'mdi-xml', img: 'editor.png' },
+      { title: 'Comunidade', icon: 'mdi-account-group', img: 'comunity.png' }
     ]
   })
 }
@@ -96,5 +95,16 @@ export default {
 <style scoped>
 .v-text-field {
   border-radius: 8px;
+}
+.v-btn--round {
+  border-radius: 30%;
+}
+.menu {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 </style>
