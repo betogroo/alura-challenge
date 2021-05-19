@@ -56,7 +56,7 @@
       :right="!$vuetify.breakpoint.lgAndUp"
       :style="
         !$vuetify.breakpoint.lgAndUp
-          ? `margin-top: ${$vuetify.application.top}px; margin-right: 8px; border-radius: 8px;`
+          ? `margin-top: ${$vuetify.application.top + 5}px; margin-right: 10px; border-radius: 8px;`
           : 'background-color: #051d3b'
       "
       color="rgba(45, 65, 91, 1)"
