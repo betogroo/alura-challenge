@@ -9,7 +9,7 @@
       height="100"
       class="rounded-t-xl justify-content-beetween"
     >
-      <v-toolbar-title>
+      <v-toolbar-title v-if="!search">
         <v-img
           width="180"
           src="https://trello-attachments.s3.amazonaws.com/60a29fb49a600b4353b63879/60a29fb49a600b4353b63898/x/c91b80ab499f30151e362f75bd531dbf/image.png"
@@ -17,15 +17,11 @@
         </v-img>
       </v-toolbar-title>
       <v-spacer
-        v-if="$vuetify.breakpoint.xs || $vuetify.breakpoint.lgAndUp"
+        v-if="($vuetify.breakpoint.xs || $vuetify.breakpoint.lgAndUp) && !search"
       ></v-spacer>
 
-      <template v-if="$vuetify.breakpoint.xsOnly">
-        <v-btn icon dark>
-          <v-icon size="32">mdi-magnify</v-icon>
-        </v-btn>
-      </template>
-      <template v-else>
+      
+      <template v-if="$vuetify.breakpoint.smAndUp || search">
         <v-text-field
           label="Busque por algo"
           solo-inverted
@@ -33,10 +29,17 @@
           hide-details
         ></v-text-field>
       </template>
+      <template v-if="$vuetify.breakpoint.xsOnly">
+        <v-btn @click.stop="search = !search" icon dark class="ml-3">
+          <v-icon size="32">{{!search ? 'mdi-magnify' : 'mdi-close'}}</v-icon>
+        </v-btn>
+      </template>
+      
+      
       <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
 
       <template v-if="$vuetify.breakpoint.mdAndDown">
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-app-bar-nav-icon @click.stop="toggleDrawer">
           <v-icon color="#FFFFFF" size="32">{{
             !drawer ? 'mdi-menu' : 'mdi-close'
           }}</v-icon>
@@ -84,11 +87,19 @@ export default {
 
   data: () => ({
     drawer: null,
+    search: false,
     items: [
       { title: 'Editor de Código', icon: 'mdi-xml', img: 'editor.png' },
       { title: 'Comunidade', icon: 'mdi-account-group', img: 'comunity.png' }
     ]
-  })
+  }),
+
+  methods: {
+    toggleDrawer() {
+      this.drawer = !this.drawer
+      this.search = false
+    }
+  }
 }
 </script>
 
