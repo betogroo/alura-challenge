@@ -5,7 +5,7 @@
 
 ###### Feito com:
 
-| <img src="src/assets/images/vuejs-original.svg" alt="vue.js" width="50" height="50"/>  | <img src="src/assets/vuetify.png" alt="sass" width="50" height="50"/>  |
+| <img src="src/assets/vuejs-original.svg" alt="vue.js" width="50" height="50"/>  | <img src="src/assets/vuetify.png" alt="sass" width="50" height="50"/>  |
 |---|---|
 |  VueJs |  Vuetify |
 
