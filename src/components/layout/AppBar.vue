@@ -6,7 +6,7 @@
       flat
       clipped-left
       color="primary"
-      height="100"
+      height="80"
       class="rounded-t-xl justify-content-beetween"
     >
       <v-toolbar-title v-if="!search">

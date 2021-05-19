@@ -5,7 +5,7 @@
       outlined
       dark
       class="ma-1"
-      :style="`border: 24px solid ${editor.borderColor}`"
+      :style="`border: 24px solid ${editorBorderColor}`"
     >
       <v-card-title class="pa-0 pt-2 pl-4">
         <v-icon
@@ -35,14 +35,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Editor',
 
   data: () => ({
     editor: {
       color: '#000000',
-      macBalls: ['#FF5F56', '#FFBD2E', '#27C93F'],
-      borderColor: '#6BD1FF'
+      macBalls: ['#FF5F56', '#FFBD2E', '#27C93F']
     },
     script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
@@ -53,7 +53,11 @@ const unfold = (f, seed) => {
   }
   return go(f, seed, [])
 }`
-  })
+  }),
+
+  computed: {
+    ...mapState(['editorBorderColor'])
+  }
 }
 </script>
 
