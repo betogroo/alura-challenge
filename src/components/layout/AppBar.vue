@@ -17,10 +17,11 @@
         </v-img>
       </v-toolbar-title>
       <v-spacer
-        v-if="($vuetify.breakpoint.xs || $vuetify.breakpoint.lgAndUp) && !search"
+        v-if="
+          ($vuetify.breakpoint.xs || $vuetify.breakpoint.lgAndUp) && !search
+        "
       ></v-spacer>
 
-      
       <template v-if="$vuetify.breakpoint.smAndUp || search">
         <v-text-field
           label="Busque por algo"
@@ -31,11 +32,10 @@
       </template>
       <template v-if="$vuetify.breakpoint.xsOnly">
         <v-btn @click.stop="search = !search" icon dark class="ml-3">
-          <v-icon size="32">{{!search ? 'mdi-magnify' : 'mdi-close'}}</v-icon>
+          <v-icon size="32">{{ !search ? 'mdi-magnify' : 'mdi-close' }}</v-icon>
         </v-btn>
       </template>
-      
-      
+
       <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
 
       <template v-if="$vuetify.breakpoint.mdAndDown">
@@ -46,10 +46,9 @@
         </v-app-bar-nav-icon>
       </template>
       <template v-else>
-        <v-avatar size="32">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
-        <span class="white--text pl-3">Harry</span>
+        <v-list color="primary">
+          <profile-avatar :loggedUser="loggedUser" />
+        </v-list>
       </template>
     </v-app-bar>
     <v-navigation-drawer
@@ -66,24 +65,34 @@
       hide-overlay
       app
     >
-      <v-list>
+      <v-list nav dense class="mt-3">
         <v-list-item v-for="item in items" :key="item.title" link class="mb-4">
           <v-btn fab medium color="#5081FB">
             <v-icon>{{ item.icon }}</v-icon>
           </v-btn>
-          <v-list-item-content class=" menu pl-5">
+          <v-list-item-content class="menu pl-5">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <template v-if="$vuetify.breakpoint.mdAndDown">
+          <v-divider class="mx-4"></v-divider>
+          <v-list-item class="mt-4">
+            <profile-avatar :loggedUser="loggedUser" />
+          </v-list-item>
+        </template>
       </v-list>
     </v-navigation-drawer>
   </div>
 </template>
 
-
 <script>
+import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
 export default {
   name: 'AppBar',
+
+  components: {
+    ProfileAvatar
+  },
 
   data: () => ({
     drawer: null,
@@ -91,7 +100,11 @@ export default {
     items: [
       { title: 'Editor de Código', icon: 'mdi-xml', img: 'editor.png' },
       { title: 'Comunidade', icon: 'mdi-account-group', img: 'comunity.png' }
-    ]
+    ],
+    loggedUser: {
+      username: 'betogroo',
+      avatar: 'https://randomuser.me/api/portraits/men/52.jpg'
+    }
   }),
 
   methods: {
