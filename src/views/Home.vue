@@ -20,7 +20,6 @@ export default {
   components: {
     Editor,
     FormProject
-
   },
 
   data: () => ({

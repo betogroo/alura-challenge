@@ -2,7 +2,9 @@
   <v-form class="px-2 mt-4">
     <v-row>
       <v-col cols="12">
-        <div class="text-subtitle-1 white--text font-weight-light"> SEU PROJETO </div>
+        <div class="text-subtitle-1 white--text font-weight-light">
+          SEU PROJETO
+        </div>
       </v-col>
     </v-row>
     <v-row>
@@ -25,11 +27,13 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <div class="text-subtitle-1 white--text font-weight-light">PERSONALIZAÇÃO</div>
+        <div class="text-subtitle-1 white--text font-weight-light">
+          PERSONALIZAÇÃO
+        </div>
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="6">
+      <v-col cols="12" sm="6" lg="12">
         <v-select
           v-model="language"
           :items="languages"
@@ -58,7 +62,11 @@
               >
               </v-sheet>
             </template>
-            <v-color-picker v-model="form.color" flat @input="changeEditorBorderColor(form.color)"/>
+            <v-color-picker
+              v-model="form.color"
+              flat
+              @input="changeEditorBorderColor(form.color)"
+            />
           </v-menu>
         </v-sheet>
       </v-col>
@@ -91,7 +99,7 @@ export default {
     }
   }),
 
-  methods:{
+  methods: {
     changeEditorBorderColor(color) {
       this.$store.dispatch('changeEditorBorderColor', color)
     }

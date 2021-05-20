@@ -1,20 +1,8 @@
 <template>
   <div>
-    <v-app-bar
-      app
-      fixed
-      flat
-      clipped-left
-      color="primary"
-      height="80"
-      class="rounded-t-xl justify-content-beetween"
-    >
-      <v-toolbar-title v-if="!search">
-        <v-img
-          width="180"
-          src="https://trello-attachments.s3.amazonaws.com/60a29fb49a600b4353b63879/60a29fb49a600b4353b63898/x/c91b80ab499f30151e362f75bd531dbf/image.png"
-        >
-        </v-img>
+    <v-app-bar app dense fixed flat clipped-left color="primary">
+      <v-toolbar-title v-if="!search" class="mr-3">
+        <v-img src="../../assets/logo.svg"> </v-img>
       </v-toolbar-title>
       <v-spacer
         v-if="
@@ -27,6 +15,7 @@
           label="Busque por algo"
           solo-inverted
           dark
+          dense
           hide-details
         ></v-text-field>
       </template>
@@ -46,7 +35,7 @@
         </v-app-bar-nav-icon>
       </template>
       <template v-else>
-        <v-list color="primary">
+        <v-list color="primary" class="pa-0">
           <profile-avatar :loggedUser="loggedUser" />
         </v-list>
       </template>
@@ -56,7 +45,9 @@
       :right="!$vuetify.breakpoint.lgAndUp"
       :style="
         !$vuetify.breakpoint.lgAndUp
-          ? `margin-top: ${$vuetify.application.top + 5}px; margin-right: 10px; border-radius: 8px;`
+          ? `margin-top: ${
+              $vuetify.application.top + 1
+            }px; margin-right: 10px; border-radius: 8px;`
           : 'background-color: #051d3b'
       "
       color="rgba(45, 65, 91, 1)"
@@ -122,13 +113,5 @@ export default {
 }
 .v-btn--round {
   border-radius: 30%;
-}
-.menu {
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0em;
-  text-align: left;
 }
 </style>
