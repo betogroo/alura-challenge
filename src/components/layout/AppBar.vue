@@ -57,12 +57,18 @@
       app
     >
       <v-list nav dense class="mt-3">
-        <v-list-item v-for="item in items" :key="item.title" link class="mb-4">
-          <v-btn fab medium color="#5081FB">
-            <v-icon>{{ item.icon }}</v-icon>
+        <v-list-item
+          :to="{ name: item.name }"
+          v-for="item in drawerRouters"
+          :key="item.meta.title"
+          link
+          class="mb-4"
+        >
+          <v-btn fab color="#5081FB">
+            <v-icon>mdi-{{ item.meta.icon }}</v-icon>
           </v-btn>
           <v-list-item-content class="menu pl-5">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>{{ item.meta.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <template v-if="$vuetify.breakpoint.mdAndDown">
@@ -88,10 +94,6 @@ export default {
   data: () => ({
     drawer: null,
     search: false,
-    items: [
-      { title: 'Editor de Código', icon: 'mdi-xml', img: 'editor.png' },
-      { title: 'Comunidade', icon: 'mdi-account-group', img: 'comunity.png' }
-    ],
     loggedUser: {
       username: 'betogroo',
       avatar: 'https://randomuser.me/api/portraits/men/52.jpg'
@@ -102,6 +104,14 @@ export default {
     toggleDrawer() {
       this.drawer = !this.drawer
       this.search = false
+    }
+  },
+
+  computed: {
+    drawerRouters() {
+      return this.$router.options.routes.filter(
+        (route) => route.meta && route.meta.inDrawer
+      )
     }
   }
 }
