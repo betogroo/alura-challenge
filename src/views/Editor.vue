@@ -15,7 +15,7 @@
 import Editor from '@/components/Editor.vue'
 import FormProject from '@/components/FormProject.vue'
 export default {
-  name: 'Home',
+  name: 'ViewEditor',
 
   components: {
     Editor,
