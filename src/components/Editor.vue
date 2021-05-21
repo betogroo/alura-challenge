@@ -4,7 +4,7 @@
       :color="color"
       outlined
       dark
-      class="ma-1"
+      class="ma-1 mb-0"
       :style="`border: 24px solid ${borderColor}`"
     >
       <v-card-title class="pa-0 pt-2 pl-4">
