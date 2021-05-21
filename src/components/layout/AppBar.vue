@@ -36,7 +36,7 @@
       </template>
       <template v-else>
         <v-list color="primary" class="pa-0">
-          <profile-avatar :loggedUser="loggedUser" />
+          <profile-avatar :user="loggedUser" />
         </v-list>
       </template>
     </v-app-bar>
@@ -74,7 +74,7 @@
         <template v-if="$vuetify.breakpoint.mdAndDown">
           <v-divider class="mx-4"></v-divider>
           <v-list-item class="mt-4">
-            <profile-avatar :loggedUser="loggedUser" />
+            <profile-avatar :user="loggedUser" />
           </v-list-item>
         </template>
       </v-list>

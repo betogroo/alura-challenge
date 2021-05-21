@@ -1,10 +1,10 @@
 <template>
   <v-list-item dark>
     <v-list-item-avatar>
-      <v-img :src="loggedUser.avatar"></v-img>
+      <v-img :src="user.avatar"></v-img>
     </v-list-item-avatar>
 
-    <v-list-item-title>{{ loggedUser.username }}</v-list-item-title>
+    <v-list-item-title>{{ user.username }}</v-list-item-title>
   </v-list-item>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   name: 'ProfileAvatar',
 
   props: {
-    loggedUser: {
+    user: {
       type: Object,
       required: true
     }
