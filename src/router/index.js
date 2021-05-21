@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/editor',
-    alias:'/',
+    alias: '/',
     name: 'Editor',
     component: Editor,
     meta: {
