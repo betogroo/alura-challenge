@@ -66,23 +66,33 @@
             class="mb-4"
           >
             <template v-slot:default="{ active }">
-              <v-sheet
-                :color="
-                  active ? 'rgba(80, 129, 251, 1)' : 'rgba(80, 129, 251, 0.16)'
-                "
-                width="48"
-                height="48"
-                class="d-flex align-center justify-center"
-                rounded="lg"
-              >
-                <v-icon>mdi-{{ item.meta.icon }}</v-icon>
-              </v-sheet>
-              <v-list-item-content class="menu pl-5">
-                <v-list-item-title
-                  v-text="item.meta.title"
-                  :class="active ? 'drawer-text-active' : 'drawer-text'"
-                />
-              </v-list-item-content>
+              <v-hover v-slot="{ hover }">
+                <div class="d-flex align-center justify-center">
+                  <v-sheet
+                    class="d-flex align-center justify-center"
+                    :color="
+                      active
+                        ? 'rgba(80, 129, 251, 1)'
+                        : hover
+                        ? 'rgba(80, 129, 251, 0.64)'
+                        : 'rgba(80, 129, 251, 0.16)'
+                    "
+                    width="48"
+                    height="48"
+                    rounded="lg"
+                  >
+                    <v-icon>mdi-{{ item.meta.icon }}</v-icon>
+                  </v-sheet>
+                  <v-list-item-content class="menu pl-5">
+                    <v-list-item-title
+                      v-text="item.meta.title"
+                      :style="
+                        active ? '' : hover ? 'opacity: 72%;' : 'opacity: 56%;'
+                      "
+                    />
+                  </v-list-item-content>
+                </div>
+              </v-hover>
             </template>
           </v-list-item>
         </v-list-item-group>
@@ -141,10 +151,6 @@ export default {
   border-radius: 30%;
 }
 
-.drawer-icon-active {
-  background-color: rgba(80, 129, 251, 1);
-  border-color: rgba(80, 129, 251, 1);
-}
 .drawer-text {
   opacity: 56%;
 }
