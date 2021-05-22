@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app dense fixed flat clipped-left color="primary">
+    <v-app-bar app dense fixed flat clipped-left color="primary" class="pa-1">
       <v-toolbar-title v-if="!search" class="mr-3">
         <v-img src="../../assets/logo.svg"> </v-img>
       </v-toolbar-title>
@@ -35,7 +35,7 @@
         </v-app-bar-nav-icon>
       </template>
       <template v-else>
-        <v-list color="primary" class="pa-0">
+        <v-list flat color="primary" class="pa-0">
           <profile-avatar :user="loggedUser" />
         </v-list>
       </template>
