@@ -56,21 +56,36 @@
       hide-overlay
       app
     >
-      <v-list nav dense class="mt-3">
-        <v-list-item
-          :to="{ name: item.name }"
-          v-for="item in drawerRouters"
-          :key="item.meta.title"
-          link
-          class="mb-4"
-        >
-          <v-btn fab color="#5081FB">
-            <v-icon>mdi-{{ item.meta.icon }}</v-icon>
-          </v-btn>
-          <v-list-item-content class="menu pl-5">
-            <v-list-item-title>{{ item.meta.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+      <v-list nav dense flat class="mt-3">
+        <v-subheader v-if="$vuetify.breakpoint.lgAndUp">Menu</v-subheader>
+        <v-list-item-group :value="selectedItem">
+          <v-list-item
+            :to="{ name: item.name }"
+            v-for="(item, i) in drawerRouters"
+            :key="i"
+            class="mb-4"
+          >
+            <template v-slot:default="{ active }">
+              <v-sheet
+                :color="
+                  active ? 'rgba(80, 129, 251, 1)' : 'rgba(80, 129, 251, 0.16)'
+                "
+                width="48"
+                height="48"
+                class="d-flex align-center justify-center"
+                rounded="lg"
+              >
+                <v-icon>mdi-{{ item.meta.icon }}</v-icon>
+              </v-sheet>
+              <v-list-item-content class="menu pl-5">
+                <v-list-item-title
+                  v-text="item.meta.title"
+                  :class="active ? 'drawer-text-active' : 'drawer-text'"
+                />
+              </v-list-item-content>
+            </template>
+          </v-list-item>
+        </v-list-item-group>
         <template v-if="$vuetify.breakpoint.mdAndDown">
           <v-divider class="mx-4"></v-divider>
           <v-list-item class="mt-4">
@@ -92,6 +107,7 @@ export default {
   },
 
   data: () => ({
+    selectedItem: 0,
     drawer: null,
     search: false,
     loggedUser: {
@@ -123,5 +139,16 @@ export default {
 }
 .v-btn--round {
   border-radius: 30%;
+}
+
+.drawer-icon-active {
+  background-color: rgba(80, 129, 251, 1);
+  border-color: rgba(80, 129, 251, 1);
+}
+.drawer-text {
+  opacity: 56%;
+}
+.drawer-text-active {
+  opacity: inherit;
 }
 </style>
