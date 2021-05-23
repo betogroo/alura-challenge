@@ -4,7 +4,7 @@
       <v-col cols="12" lg="8">
         <editor :borderColor="editorBorderColor" :text="script" />
         <div class="mt-5 mx-1">
-          <v-btn block dark color="#133055">Visualizar com o highlight</v-btn>
+          <v-btn block dark color="rgba(80, 129, 251, 0.08)">Visualizar com o highlight</v-btn>
         </div>
       </v-col>
       <v-col>

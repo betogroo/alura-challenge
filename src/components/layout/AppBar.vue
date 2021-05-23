@@ -144,12 +144,6 @@ export default {
 </script>
 
 <style scoped>
-.v-text-field {
-  border-radius: 8px;
-}
-.v-btn--round {
-  border-radius: 30%;
-}
 
 .drawer-text {
   opacity: 56%;

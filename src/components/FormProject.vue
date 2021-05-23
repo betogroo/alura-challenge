@@ -11,15 +11,17 @@
       <v-col cols="12">
         <v-text-field
           label="Nome do seu projeto"
-          solo-inverted
+          background-color="rgba(255, 255, 255, 0.24)"
           dark
+          solo
           hide-details
         ></v-text-field>
       </v-col>
       <v-col>
         <v-textarea
+          background-color="rgba(255, 255, 255, 0.24)"
           dark
-          solo-inverted
+          solo
           auto-grow
           value="texto do seu projeto"
         ></v-textarea>
@@ -39,8 +41,9 @@
           :items="languages"
           item-text="name"
           item-value="id"
-          hide-details=""
-          solo-inverted
+          hide-details
+          solo
+          background-color="rgba(255, 255, 255, 0.16)"
           dark
         ></v-select>
       </v-col>
@@ -73,7 +76,9 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-btn block color="#5081FB">Salvar Projeto</v-btn>
+        <v-btn
+          block 
+          color="#5081FB">Salvar Projeto</v-btn>
       </v-col>
     </v-row>
   </v-form>
