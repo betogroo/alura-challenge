@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Editor from '../views/Editor.vue'
 import Community from '../views/Community.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,16 @@ const routes = [
       title: 'Comunidade',
       icon: 'account-group',
       inDrawer: 2
+    }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: {
+      title: 'Profile',
+      icon: 'face-profile',
+      inDrawer: false
     }
   }
 ]
