@@ -144,7 +144,6 @@ export default {
 </script>
 
 <style scoped>
-
 .drawer-text {
   opacity: 56%;
 }
