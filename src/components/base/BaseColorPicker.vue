@@ -1,19 +1,12 @@
 <template>
-  <v-sheet class="pa-2" rounded height="48" color="white">
+  <v-card class="colorpicker" flat>
     <v-menu
-      top
-      nudge-bottom="105"
-      nudge-left="16"
+     top
       :close-on-content-click="true"
     >
       <template v-slot:activator="{ on }">
-        <v-sheet
-          v-on="on"
-          class="ma-auto"
-          height="32"
-          :color="editorBorderColor"
-        >
-        </v-sheet>
+        <v-card rounded="lg" v-on="on" height="34" :color="editorBorderColor">
+        </v-card>
       </template>
       <v-color-picker
         v-model="color"
@@ -25,7 +18,7 @@
         swatches-max-height="250"
       ></v-color-picker>
     </v-menu>
-  </v-sheet>
+  </v-card>
 </template>
 
 <script>
@@ -49,4 +42,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.colorpicker {
+  height: 48px;
+  padding: 6px;
+  background-color: #051d3b !important;
+  border: 1px solid white;
+  border-radius: 8px !important;
+}
+</style>
