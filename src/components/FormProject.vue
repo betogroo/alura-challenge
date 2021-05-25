@@ -76,7 +76,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-btn block color="#5081FB">Salvar Projeto</v-btn>
+        <base-btn-filled block>Salvar Projeto</base-btn-filled>
       </v-col>
     </v-row>
   </v-form>

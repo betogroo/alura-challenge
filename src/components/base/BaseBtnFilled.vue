@@ -2,7 +2,6 @@
   <v-hover v-slot="{ hover }">
     <v-btn
       depressed
-      :dark="dark"
       :block="block"
       :color="!hover ? color : colorHover"
       :ripple="false"
@@ -14,26 +13,30 @@
 
 <script>
 import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
+
 export default {
   mixins: [BaseBtnMixin],
 
-  name: 'BaseButtonOutlined',
+  name: 'BaseButtonFilled',
 
   props: {
     color: {
       type: String,
-      default: 'rgba(80, 129, 251, 0.08)'
+      default: '#5081FB'
     },
     colorHover: {
       type: String,
-      default: 'rgba(80, 129, 251, 0.16)'
+      default: '#7BA4FC'
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+v.btn:focus {
+  background-color: #96b9fd;
+}
 .v-btn:active {
-  //transition: box-shadow 2s ease-in-out;
-  box-shadow: 0px 0px 0px 4px rgba(80, 129, 251, 0.24);
+  //transition: box-shadow 0.1s ease-in-out;
+  box-shadow: 0px 0px 0px 4px rgba(80, 129, 251, 0.72);
 }
 </style>
