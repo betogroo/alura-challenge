@@ -11,13 +11,7 @@
       ></v-spacer>
 
       <template v-if="$vuetify.breakpoint.smAndUp || search">
-        <v-text-field
-          label="Busque por algo"
-          solo-inverted
-          dark
-          dense
-          hide-details
-        ></v-text-field>
+        <base-text-field dense label="Busque por algo"></base-text-field>
       </template>
       <template v-if="$vuetify.breakpoint.xsOnly">
         <v-btn @click.stop="search = !search" icon dark class="ml-3">

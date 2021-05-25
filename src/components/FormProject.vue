@@ -9,22 +9,10 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-text-field
-          label="Nome do seu projeto"
-          background-color="rgba(255, 255, 255, 0.24)"
-          dark
-          solo
-          hide-details
-        ></v-text-field>
+        <base-text-field></base-text-field>
       </v-col>
       <v-col>
-        <v-textarea
-          background-color="rgba(255, 255, 255, 0.24)"
-          dark
-          solo
-          auto-grow
-          value="texto do seu projeto"
-        ></v-textarea>
+        <base-text-area></base-text-area>
       </v-col>
     </v-row>
     <v-row>
