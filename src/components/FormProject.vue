@@ -24,42 +24,10 @@
     </v-row>
     <v-row>
       <v-col cols="12" sm="6" lg="12">
-        <v-select
-          v-model="language"
-          :items="languages"
-          item-text="name"
-          item-value="id"
-          hide-details
-          solo
-          background-color="rgba(255, 255, 255, 0.16)"
-          dark
-        ></v-select>
+        <base-select dark></base-select>
       </v-col>
       <v-col>
-        <v-sheet class="pa-1" rounded height="48">
-          <v-menu
-            top
-            nudge-bottom="105"
-            nudge-left="16"
-            :close-on-content-click="true"
-          >
-            <template v-slot:activator="{ on }">
-              <v-sheet
-                v-on="on"
-                rounded=""
-                class="ma-auto"
-                height="40"
-                :color="form.color"
-              >
-              </v-sheet>
-            </template>
-            <v-color-picker
-              v-model="form.color"
-              flat
-              @input="changeEditorBorderColor(form.color)"
-            />
-          </v-menu>
-        </v-sheet>
+        <base-color-picker></base-color-picker>
       </v-col>
     </v-row>
     <v-row>
@@ -72,29 +40,8 @@
 
 <script>
 export default {
-  name: 'Formproject',
+  name: 'Formproject'
 
-  data: () => ({
-    form: {
-      color: '#6BD1FF'
-    },
-    languages: [
-      { name: 'Javascript', id: 1 },
-      { name: 'Typescript', id: 2 },
-      { name: 'PHP', id: 3 },
-      { name: 'Python', id: 4 }
-    ],
-    language: {
-      name: 'Javascript',
-      id: 1
-    }
-  }),
-
-  methods: {
-    changeEditorBorderColor(color) {
-      this.$store.dispatch('changeEditorBorderColor', color)
-    }
-  }
 }
 </script>
 
