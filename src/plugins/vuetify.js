@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib/framework'
 import '@/assets/scss/app.scss'
+import '@/scss/override.scss'
 
 Vue.use(Vuetify)
 
