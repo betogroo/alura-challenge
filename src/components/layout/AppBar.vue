@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app dense fixed flat clipped-left color="primary" class="pa-1">
+    <v-app-bar app fixed flat clipped-left color="primary" class="pa-1">
       <v-toolbar-title v-if="!search" class="mr-3">
         <v-img src="../../assets/logo.svg"> </v-img>
       </v-toolbar-title>
@@ -21,18 +21,11 @@
 
       <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
 
-      <template v-if="$vuetify.breakpoint.mdAndDown">
-        <v-app-bar-nav-icon @click.stop="toggleDrawer">
-          <v-icon color="#FFFFFF" size="32">{{
-            !drawer ? 'mdi-menu' : 'mdi-close'
-          }}</v-icon>
-        </v-app-bar-nav-icon>
-      </template>
-      <template v-else>
-        <v-list flat color="primary" class="pa-0">
-          <profile-avatar :user="loggedUser" />
-        </v-list>
-      </template>
+      <app-bar-right
+        :drawer="drawer"
+        :loggedUser="loggedUser"
+        @toggleDrawer="toggleDrawer"
+      ></app-bar-right>
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
@@ -102,27 +95,26 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import AppBarRight from '@/components/layout/AppBarRight.vue'
 import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
 export default {
   name: 'AppBar',
 
   components: {
-    ProfileAvatar
+    ProfileAvatar,
+    AppBarRight
   },
 
   data: () => ({
     selectedItem: 0,
-    drawer: null,
-    search: false,
-    loggedUser: {
-      username: 'betogroo',
-      avatar: 'https://randomuser.me/api/portraits/men/52.jpg'
-    }
+    search: false
   }),
 
   methods: {
     toggleDrawer() {
-      this.drawer = !this.drawer
+      // this.drawer = !this.drawer
+      this.$store.dispatch('toggleDrawer')
       this.search = false
     }
   },
@@ -132,7 +124,14 @@ export default {
       return this.$router.options.routes.filter(
         (route) => route.meta && route.meta.inDrawer
       )
-    }
+    },
+    drawer: {
+      get() {
+        return this.$store.state.drawer
+      },
+      set() {}
+    },
+    ...mapState(['loggedUser'])
   }
 }
 </script>
