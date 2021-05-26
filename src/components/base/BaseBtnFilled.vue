@@ -32,6 +32,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.v-btn::before {
+  background-color: transparent;
+}
 v.btn:focus {
   background-color: #96b9fd;
 }

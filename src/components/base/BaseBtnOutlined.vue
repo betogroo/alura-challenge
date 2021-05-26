@@ -32,6 +32,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.v-btn::before {
+  background-color: transparent;
+}
 .v-btn:active {
   //transition: box-shadow 2s ease-in-out;
   box-shadow: 0px 0px 0px 4px rgba(80, 129, 251, 0.24);

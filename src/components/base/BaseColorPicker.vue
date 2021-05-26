@@ -1,9 +1,6 @@
 <template>
   <v-card class="colorpicker" flat>
-    <v-menu
-     top
-      :close-on-content-click="true"
-    >
+    <v-menu top :close-on-content-click="true">
       <template v-slot:activator="{ on }">
         <v-card rounded="lg" v-on="on" height="34" :color="editorBorderColor">
         </v-card>
