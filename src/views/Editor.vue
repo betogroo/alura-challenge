@@ -2,7 +2,11 @@
   <v-container class="pt-0">
     <v-row>
       <v-col cols="12" lg="8">
-        <editor :borderColor="editorBorderColor" :text="script" />
+        <editor
+          :borderColor="editorBorderColor"
+          :text="script"
+          :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
+        />
         <div class="mt-5 mx-1">
           <base-btn-outlined dark block
             >Visualizar com o Highlight</base-btn-outlined

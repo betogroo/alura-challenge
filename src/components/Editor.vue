@@ -19,7 +19,7 @@
         </v-icon>
       </v-card-title>
       <v-card-text class="pa-0 pl-1">
-        <v-textarea :background-color="color" auto-grow solo :value="text">
+        <v-textarea :background-color="color" solo :value="text" :height="size">
         </v-textarea>
       </v-card-text>
     </v-card>
@@ -42,6 +42,10 @@ export default {
     borderColor: {
       type: String,
       default: '#6BD1FF'
+    },
+    size: {
+      type: [String, Number],
+      default: '302'
     }
   },
 

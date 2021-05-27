@@ -7,7 +7,11 @@
         cols="12"
         :lg="row.length === 2 ? '6' : '12'"
       >
-        <editor :borderColor="project.borderColor" :text="project.script" />
+        <editor
+          :borderColor="project.borderColor"
+          :text="project.script"
+          :size="editorHeight"
+        />
         <project-details :project="project" />
       </v-col>
     </v-row>
@@ -42,7 +46,28 @@ export default {
     slicedProjects() {
       return this.sliceProjects(2)
     },
-    ...mapState(['projects'])
+    ...mapState(['projects']),
+    editorHeight() {
+      let size = ''
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          size = 354
+          break
+        case 'sm':
+          size = 294
+          break
+        case 'md':
+          size = 294
+          break
+        case 'lg':
+          size = 240
+          break
+        case 'xl':
+          size = 240
+          break
+      }
+      return size
+    }
   }
 }
 </script>
