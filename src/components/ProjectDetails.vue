@@ -11,14 +11,15 @@
         v-if="!$vuetify.breakpoint.lgAndUp || hover"
         class="d-flex"
       >
-        <div class="mx-2">
-          <v-icon small class="mr-1"> mdi-chat </v-icon>
-          <span class="text-caption">{{ project.comments }}</span>
-        </div>
-        <div class="mx-2">
-          <v-icon small class="mr-1"> mdi-heart </v-icon>
-          <span class="text-caption">{{ project.heart }}</span>
-        </div>
+        <project-reactions
+          reactionType="comments"
+          :itemCount="project.comments"
+        ></project-reactions>
+        <project-reactions
+          reactionType="heart"
+          :itemCount="project.heart"
+        ></project-reactions>
+
         <v-spacer></v-spacer>
         <div>
           <profile-avatar :user="project.user" />
@@ -30,11 +31,14 @@
 
 <script>
 import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
+import ProjectReactions from '@/components/layout/ProjectReactions.vue'
+
 export default {
   name: 'ProjectDetails',
 
   components: {
-    ProfileAvatar
+    ProfileAvatar,
+    ProjectReactions
   },
 
   props: {
@@ -45,5 +49,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
