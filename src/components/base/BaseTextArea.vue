@@ -13,15 +13,13 @@
 </template>
 
 <script>
-export default {
-  name: 'BaseTextArea',
+import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
 
-  props: {
-    value: {
-      type: String,
-      default: 'Text Area'
-    }
-  }
+export default {
+  mixins: [BaseBtnMixin],
+
+  name: 'BaseTextArea'
+  
 }
 </script>
 

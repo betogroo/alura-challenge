@@ -10,22 +10,24 @@
       solo
       flat
       hide-details
-    ></v-text-field>
+      :value="value"
+    >
+      <slot></slot>
+    </v-text-field>
   </v-hover>
 </template>
 
 <script>
+import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
 export default {
+  mixins: [BaseBtnMixin],
+
   name: 'BaseTextField',
 
   props: {
     label: {
       type: String,
       default: 'Label'
-    },
-    dense: {
-      type: Boolean,
-      default: false
     }
   }
 }

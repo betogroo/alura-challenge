@@ -8,10 +8,13 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/editor',
-    alias: '/',
+    path: '/editor/:id',
+    alias: [
+      '/:id', '/editor'
+    ],
     name: 'Editor',
     component: Editor,
+    props: (route) => ({ id: parseInt(route.params.id) || 1 }),
     meta: {
       title: 'Editor de Código',
       icon: 'xml',

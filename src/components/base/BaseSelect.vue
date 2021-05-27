@@ -2,7 +2,7 @@
   <v-hover v-slot="{ hover }">
     <v-select
       v-model="language"
-      :items="languages"
+      :items="items"
       item-text="name"
       item-value="id"
       hide-details
@@ -17,32 +17,30 @@
 </template>
 
 <script>
+import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
 export default {
+  mixins: [BaseBtnMixin],
+
   name: 'BaseSelect',
 
   props: {
-    dark: {
-      type: Boolean,
-      default: false
+    items: {
+      type: Array,
+      required: true
     },
-    dense: {
-      type: Boolean,
-      default: false
-    }
+    item: Object
   },
 
-  data: () => ({
-    languages: [
-      { name: 'Javascript', id: 1 },
-      { name: 'Typescript', id: 2 },
-      { name: 'PHP', id: 3 },
-      { name: 'Python', id: 4 }
-    ],
+  computed: {
     language: {
-      name: 'Javascript',
-      id: 1
+      get: function() {
+        return this.item
+      },
+      set: function() {
+        
+      }
     }
-  })
+  }
 }
 </script>
 

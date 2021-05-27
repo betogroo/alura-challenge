@@ -22,7 +22,7 @@
 
         <v-spacer></v-spacer>
         <div>
-          <profile-avatar :user="project.user" />
+          <profile-avatar :user="getUser(project.idUser)" @click.stop="$router.push({name: 'Editor', params: { id: project.id}})" />
         </div>
       </v-card-actions>
     </v-card>
@@ -45,6 +45,13 @@ export default {
     project: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    getUser(id) {
+      const user = this.$store.getters.getUserById(id)
+      return user
     }
   }
 }

@@ -3,18 +3,18 @@
     <v-row>
       <v-col cols="12" lg="8">
         <editor
-          :borderColor="editorBorderColor"
-          :text="script"
+          :borderColor="project.borderColor"
+          :text="project.script"
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
         />
         <div class="mt-5 mx-1">
           <base-btn-outlined dark block
-            >Visualizar com o Highlight</base-btn-outlined
+            >Visualizar com o Highlight {{ id }}</base-btn-outlined
           >
         </div>
       </v-col>
       <v-col>
-        <form-project />
+        <form-project :project="project" />
       </v-col>
     </v-row>
   </v-container>
@@ -32,23 +32,24 @@ export default {
     FormProject
   },
 
-  data: () => ({
-    form: {
-      color: '#6BD1FF'
-    },
-    script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}`
-  }),
+  props: {
+    id: {
+      type: [String, Number],
+      default: 1
+    }
+  },
+
+  methods: {
+    getProject(id) {
+      return this.$store.getters.getProjectById(id)
+    }
+  },
 
   computed: {
-    ...mapState(['editorBorderColor'])
+    ...mapState(['loggedUser', 'editorBorderColor']),
+    project() {
+      return this.getProject(this.id)
+    }
   }
 }
 </script>

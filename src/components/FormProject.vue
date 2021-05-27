@@ -9,10 +9,10 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <base-text-field></base-text-field>
+        <base-text-field :value="project.title"></base-text-field>
       </v-col>
       <v-col>
-        <base-text-area></base-text-area>
+        <base-text-area :value="project.description"></base-text-area>
       </v-col>
     </v-row>
     <v-row>
@@ -24,7 +24,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" sm="6" lg="12">
-        <base-select dark></base-select>
+        <base-select dark :items="languages" :item="projectLanguage"></base-select>
       </v-col>
       <v-col>
         <base-color-picker></base-color-picker>
@@ -39,8 +39,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'Formproject'
+  name: 'Formproject',
+
+  props: {
+    project: {
+      type: Object
+    }
+  },
+
+  methods: {
+    getLanguage(id) {
+      return this.$store.getters.getLanguageByProjectId(id)
+    }
+  },
+
+  computed: {
+    ...mapState(['languages']),
+    projectLanguage() {
+      return this.getLanguage(this.project.idLanguage)
+    }
+  }
 }
 </script>
 
