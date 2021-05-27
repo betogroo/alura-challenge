@@ -39,7 +39,6 @@ v.btn:focus {
   background-color: #96b9fd;
 }
 .v-btn:active {
-  //transition: box-shadow 0.1s ease-in-out;
   box-shadow: 0px 0px 0px 4px rgba(80, 129, 251, 0.72);
 }
 </style>

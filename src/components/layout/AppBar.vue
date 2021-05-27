@@ -20,12 +20,26 @@
       </template>
 
       <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
-
-      <app-bar-right
-        :drawer="drawer"
-        :loggedUser="loggedUser"
-        @toggleDrawer="toggleDrawer"
-      ></app-bar-right>
+      <template v-if="$vuetify.breakpoint.mdAndDown">
+        <v-app-bar-nav-icon class="pl-2">
+          <v-btn
+            text
+            width="38"
+            height="38"
+            color="white"
+            icon
+            @click.stop="toggleDrawer"
+            v-ripple="false"
+          >
+            <v-icon size="30">{{ !drawer ? 'mdi-menu' : 'mdi-close' }}</v-icon>
+          </v-btn>
+        </v-app-bar-nav-icon>
+      </template>
+      <template v-else>
+        <v-list flat color="primary" class="pa-0">
+          <profile-avatar :user="loggedUser" />
+        </v-list>
+      </template>
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
@@ -96,25 +110,23 @@
 
 <script>
 import { mapState } from 'vuex'
-import AppBarRight from '@/components/layout/AppBarRight.vue'
 import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
 export default {
   name: 'AppBar',
 
   components: {
-    ProfileAvatar,
-    AppBarRight
+    ProfileAvatar
   },
 
   data: () => ({
     selectedItem: 0,
-    search: false
+    search: false,
+    drawer: null
   }),
 
   methods: {
     toggleDrawer() {
-      // this.drawer = !this.drawer
-      this.$store.dispatch('toggleDrawer')
+      this.drawer = !this.drawer
       this.search = false
     }
   },
@@ -124,12 +136,6 @@ export default {
       return this.$router.options.routes.filter(
         (route) => route.meta && route.meta.inDrawer
       )
-    },
-    drawer: {
-      get() {
-        return this.$store.state.drawer
-      },
-      set() {}
     },
     ...mapState(['loggedUser'])
   }
@@ -142,5 +148,18 @@ export default {
 }
 .drawer-text-active {
   opacity: inherit;
+}
+.v-icon.v-icon::after {
+  border-radius: 16px;
+}
+.v-btn {
+  background-color: transparent;
+}
+.v-btn:before {
+  border-radius: 8px;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.6, 1);
+}
+.theme--light.v-btn:focus::before {
+  opacity: 0.16;
 }
 </style>
