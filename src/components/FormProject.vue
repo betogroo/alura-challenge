@@ -24,7 +24,11 @@
     </v-row>
     <v-row>
       <v-col cols="12" sm="6" lg="12">
-        <base-select dark :items="languages" :item="projectLanguage"></base-select>
+        <base-select
+          dark
+          :items="languages"
+          :item="projectLanguage"
+        ></base-select>
       </v-col>
       <v-col>
         <base-color-picker></base-color-picker>

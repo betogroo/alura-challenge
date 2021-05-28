@@ -19,7 +19,6 @@ export default {
   mixins: [BaseBtnMixin],
 
   name: 'BaseTextArea'
-  
 }
 </script>
 

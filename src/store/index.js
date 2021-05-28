@@ -87,7 +87,8 @@ export default new Vuex.Store({
         idLanguage: 1,
         title: 'Projeto Novo',
         borderColor: '#7A8B23',
-        description: 'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
+        description:
+          'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
         comments: 8,
         heart: 6,
         script: `const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -109,7 +110,8 @@ const unfold = (f, seed) => {
         idLanguage: 2,
         title: 'Título do Projeto 2',
         borderColor: '#61238B',
-        description: 'Orci varius natoque penatibus et typescript ep amagnis dis parturient.',
+        description:
+          'Orci varius natoque penatibus et typescript ep amagnis dis parturient.',
         comments: 4,
         heart: 7,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -255,13 +257,13 @@ const unfold = (f, seed) => {
   },
   getters: {
     getUserById: (state) => (id) => {
-      return state.users.find(user => user.id === id)
+      return state.users.find((user) => user.id === id)
     },
     getProjectById: (state) => (id) => {
-      return state.projects.find(project => project.id === id)
+      return state.projects.find((project) => project.id === id)
     },
     getLanguageByProjectId: (state) => (id) => {
-      return state.languages.find(language => language.id === id)
+      return state.languages.find((language) => language.id === id)
     }
   },
   modules: {}

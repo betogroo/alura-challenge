@@ -9,9 +9,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/editor/:id',
-    alias: [
-      '/:id', '/editor'
-    ],
+    alias: ['/:id', '/editor'],
     name: 'Editor',
     component: Editor,
     props: (route) => ({ id: parseInt(route.params.id) || 1 }),

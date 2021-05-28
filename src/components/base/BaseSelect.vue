@@ -33,12 +33,10 @@ export default {
 
   computed: {
     language: {
-      get: function() {
+      get: function () {
         return this.item
       },
-      set: function() {
-        
-      }
+      set: function () {}
     }
   }
 }

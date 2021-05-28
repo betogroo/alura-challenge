@@ -22,7 +22,12 @@
 
         <v-spacer></v-spacer>
         <div>
-          <profile-avatar :user="getUser(project.idUser)" @click.stop="$router.push({name: 'Editor', params: { id: project.id}})" />
+          <profile-avatar
+            :user="getUser(project.idUser)"
+            @click.stop="
+              $router.push({ name: 'Editor', params: { id: project.id } })
+            "
+          />
         </div>
       </v-card-actions>
     </v-card>
