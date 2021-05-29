@@ -1,11 +1,12 @@
 <template>
   <div>
     <v-card
-      :color="color"
       outlined
       dark
+      flat
+      :to="!editable ? { name: 'Editor', params: { id: project.id } } : ''"
       class="ma-1 mb-0"
-      :style="`border: 24px solid ${borderColor}`"
+      :style="`border: 24px solid ${project.borderColor}`"
     >
       <v-card-title class="pa-0 pt-2 pl-4">
         <v-icon
@@ -19,8 +20,20 @@
         </v-icon>
       </v-card-title>
       <v-card-text class="pa-0 pl-1">
-        <v-textarea :background-color="color" solo :value="text" :height="size">
-        </v-textarea>
+        <template v-if="!editable">
+          <v-card class="editor" :height="size">{{ project.script }}</v-card>
+        </template>
+        <template v-else>
+          <v-textarea
+            hide-details=""
+            solo
+            :value="project.script"
+            :height="size"
+            no-resize
+            rows="5"
+          >
+          </v-textarea>
+        </template>
       </v-card-text>
     </v-card>
   </div>
@@ -31,6 +44,10 @@ export default {
   name: 'Editor',
 
   props: {
+    project: {
+      type: Object,
+      required: true
+    },
     color: {
       type: String,
       default: '#000000'
@@ -46,6 +63,10 @@ export default {
     size: {
       type: [String, Number],
       default: '302'
+    },
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -54,3 +75,5 @@ export default {
   })
 }
 </script>
+
+<style lang="scss" scoped></style>

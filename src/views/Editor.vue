@@ -3,8 +3,8 @@
     <v-row>
       <v-col cols="12" lg="8">
         <editor
-          :borderColor="project.borderColor"
-          :text="project.script"
+          editable
+          :project="project"
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
         />
         <div class="mt-5 mx-1">

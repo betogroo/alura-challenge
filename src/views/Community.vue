@@ -7,11 +7,7 @@
         cols="12"
         :lg="row.length === 2 ? '6' : '12'"
       >
-        <editor
-          :borderColor="project.borderColor"
-          :text="project.script"
-          :size="editorHeight"
-        />
+        <editor :project="project" :size="editorHeight" />
         <project-details :project="project" />
       </v-col>
     </v-row>
@@ -29,8 +25,6 @@ export default {
     Editor,
     ProjectDetails
   },
-
-  data: () => ({}),
 
   methods: {
     sliceProjects(rows) {
