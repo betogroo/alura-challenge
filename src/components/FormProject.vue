@@ -43,15 +43,12 @@
 </template>
 
 <script>
+import { ProjectMixin } from '@/components/mixins/ComponentMixins.js'
 import { mapState } from 'vuex'
 export default {
-  name: 'Formproject',
+  mixins: [ProjectMixin],
 
-  props: {
-    project: {
-      type: Object
-    }
-  },
+  name: 'Formproject',
 
   methods: {
     getLanguage(id) {

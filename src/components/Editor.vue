@@ -40,14 +40,13 @@
 </template>
 
 <script>
+import { ProjectMixin } from '@/components/mixins/ComponentMixins.js'
 export default {
+  mixins: [ProjectMixin],
+
   name: 'Editor',
 
   props: {
-    project: {
-      type: Object,
-      required: true
-    },
     color: {
       type: String,
       default: '#000000'
