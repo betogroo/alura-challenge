@@ -4,7 +4,7 @@ export const ProjectMixin = {
       type: Object,
       default: () => ({
         script: '',
-        borderColor: 'white',
+        borderColor: '#FFFFFF',
         title: 'Nome do seu projeto',
         description: 'Descrição do seu projeto',
         idLanguage: 1

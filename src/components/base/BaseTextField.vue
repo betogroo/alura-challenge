@@ -1,35 +1,32 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-text-field
+      solo
+      flat
+      hide-details
+      clearable
+      @input="updateValue"
+      :value="value"
       :label="label"
       :background-color="
         !hover ? 'rgba(255, 255, 255, 0.16)' : 'rgba(255, 255, 255, 0.24)'
       "
-      dark
       :dense="dense"
-      solo
-      flat
-      hide-details
-      :value="value"
+      :dark="dark"
     >
-      <slot></slot>
     </v-text-field>
   </v-hover>
 </template>
 
 <script>
-import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
+import {
+  BaseFormMixins,
+  BaseTextMixins
+} from '@/components/base/mixins/BaseMixins.js'
 export default {
-  mixins: [BaseBtnMixin],
+  mixins: [BaseFormMixins, BaseTextMixins],
 
-  name: 'BaseTextField',
-
-  props: {
-    label: {
-      type: String,
-      default: 'Label'
-    }
-  }
+  name: 'BaseTextField'
 }
 </script>
 

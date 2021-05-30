@@ -2,20 +2,20 @@
   <v-hover v-slot="{ hover }">
     <v-btn
       depressed
+      :type="type"
       :block="block"
       :color="!hover ? color : colorHover"
       :ripple="false"
     >
-      <slot>{{ text }}</slot>
+      <slot />
     </v-btn>
   </v-hover>
 </template>
 
 <script>
-import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
-
+import { BaseBtnMixins } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  mixins: [BaseBtnMixin],
+  mixins: [BaseBtnMixins],
 
   name: 'BaseButtonFilled',
 

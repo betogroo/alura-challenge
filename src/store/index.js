@@ -132,7 +132,8 @@ const unfold = (f, seed) => {
         idLanguage: 1,
         title: 'Título do Projeto 3',
         borderColor: '#8B2A23',
-        description: 'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
+        description:
+          'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 2,
         heart: 8,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -154,7 +155,8 @@ const unfold = (f, seed) => {
         idLanguage: 1,
         title: 'Título do Projeto 4',
         borderColor: '#238B59',
-        description: 'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
+        description:
+          'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 1,
         heart: 6,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -176,7 +178,8 @@ const unfold = (f, seed) => {
         idLanguage: 1,
         title: 'Título do Projeto 5',
         borderColor: '#FFFFFF',
-        description: 'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
+        description:
+          'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 12,
         heart: 14,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -198,7 +201,8 @@ const unfold = (f, seed) => {
         idLanguage: 1,
         title: 'Título do Projeto 6',
         borderColor: '#BABACA',
-        description: 'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
+        description:
+          'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
         heart: 16,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -220,7 +224,8 @@ const unfold = (f, seed) => {
         idLanguage: 1,
         title: 'Título do Projeto 6',
         borderColor: '#BABACA',
-        description: 'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
+        description:
+          'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
         heart: 16,
         script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)

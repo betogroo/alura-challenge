@@ -1,22 +1,28 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-textarea
+      solo
+      auto-grow
+      hide-details
       :background-color="
         !hover ? 'rgba(255, 255, 255, 0.16)' : 'rgba(255, 255, 255, 0.24)'
       "
-      dark
-      solo
-      auto-grow
+      :dark="dark"
+      @input="updateValue"
       :value="value"
+      :label="label"
     ></v-textarea>
   </v-hover>
 </template>
 
 <script>
-import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
+import {
+  BaseFormMixins,
+  BaseTextMixins
+} from '@/components/base/mixins/BaseMixins.js'
 
 export default {
-  mixins: [BaseBtnMixin],
+  mixins: [BaseFormMixins, BaseTextMixins],
 
   name: 'BaseTextArea'
 }

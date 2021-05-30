@@ -9,8 +9,8 @@
         />
         <div class="mt-5 mx-1">
           <base-btn-outlined dark block
-            >Visualizar com o Highlight {{ id }}</base-btn-outlined
-          >
+            >Visualizar com o Highlight
+          </base-btn-outlined>
         </div>
       </v-col>
       <v-col>

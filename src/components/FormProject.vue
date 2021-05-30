@@ -1,5 +1,5 @@
 <template>
-  <v-form class="px-2 mt-4">
+  <v-form @submit.prevent="testForm" class="px-2 mt-4">
     <v-row>
       <v-col cols="12">
         <div class="text-subtitle-1 white--text font-weight-light">
@@ -9,10 +9,18 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <base-text-field :value="project.title"></base-text-field>
+        <base-text-field
+          dark
+          v-model="form.title"
+          label="Nome do seu projeto"
+        ></base-text-field>
       </v-col>
       <v-col>
-        <base-text-area :value="project.description"></base-text-area>
+        <base-text-area
+          dark
+          v-model="form.description"
+          label="Descrição do seu projeto"
+        ></base-text-area>
       </v-col>
     </v-row>
     <v-row>
@@ -27,11 +35,15 @@
         <base-select
           dark
           :items="languages"
-          :item="projectLanguage"
+          :value="projectLanguage"
+          v-model="form.language"
         ></base-select>
       </v-col>
       <v-col>
-        <base-color-picker :color="project.borderColor"></base-color-picker>
+        <base-color-picker
+          :color="project.borderColor"
+          v-model="form.color"
+        ></base-color-picker>
       </v-col>
     </v-row>
     <v-row>
@@ -50,9 +62,16 @@ export default {
 
   name: 'Formproject',
 
+  data: () => ({
+    form: {}
+  }),
+
   methods: {
     getLanguage(id) {
       return this.$store.getters.getLanguageByProjectId(id)
+    },
+    testForm() {
+      console.log(this.form)
     }
   },
 

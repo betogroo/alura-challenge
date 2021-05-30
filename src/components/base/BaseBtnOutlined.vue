@@ -2,20 +2,22 @@
   <v-hover v-slot="{ hover }">
     <v-btn
       depressed
+      v-on="$listeners"
+      :type="type"
       :dark="dark"
       :block="block"
       :color="!hover ? color : colorHover"
       :ripple="false"
     >
-      <slot>{{ text }}</slot>
+      <slot />
     </v-btn>
   </v-hover>
 </template>
 
 <script>
-import { BaseBtnMixin } from '@/components/base/mixins/BaseBtnMixin.js'
+import { BaseBtnMixins } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  mixins: [BaseBtnMixin],
+  mixins: [BaseBtnMixins],
 
   name: 'BaseButtonOutlined',
 

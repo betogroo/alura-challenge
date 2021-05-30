@@ -11,7 +11,12 @@
       ></v-spacer>
 
       <template v-if="$vuetify.breakpoint.smAndUp || search">
-        <base-text-field dense label="Busque por algo"></base-text-field>
+        <base-text-field
+          dense
+          dark
+          v-model="form.search"
+          label="Busque por algo"
+        ></base-text-field>
       </template>
       <template v-if="$vuetify.breakpoint.xsOnly">
         <v-btn @click.stop="search = !search" icon dark class="ml-3">
@@ -121,7 +126,10 @@ export default {
   data: () => ({
     selectedItem: 0,
     search: false,
-    drawer: null
+    drawer: null,
+    form: {
+      search: ''
+    }
   }),
 
   methods: {
