@@ -42,7 +42,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['loggedUser', 'editorBorderColor']),
+    ...mapState(['loggedUser']),
     project() {
       return this.getProject(this.id)
     }

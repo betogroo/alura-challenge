@@ -2,13 +2,13 @@
   <v-card class="colorpicker" flat>
     <v-menu top :close-on-content-click="true">
       <template v-slot:activator="{ on }">
-        <v-card rounded="lg" v-on="on" height="34" :color="editorBorderColor">
+        <v-card rounded="lg" v-on="on" height="34" :color="color">
         </v-card>
       </template>
       <v-color-picker
-        v-model="color"
+        :value="color"
         hide-inputs
-        @input="changeEditorBorderColor(color)"
+        
         dot-size="25"
         hide-mode-switch
         mode="hexa"
@@ -19,21 +19,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'BaseColorPicker',
 
-  data: () => ({
-    color: '#6BD1FF'
-  }),
-
-  computed: {
-    ...mapState(['editorBorderColor'])
+  props: {
+    color: {
+      type: String,
+      default: 'white'
+    }
   },
 
   methods: {
-    changeEditorBorderColor(color) {
-      this.$store.dispatch('changeEditorBorderColor', color)
+    changeColor(color) {
+      alert(color)
     }
   }
 }

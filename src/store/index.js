@@ -6,7 +6,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     drawer: null,
-    editorBorderColor: '#6BD1FF',
     languages: [
       { name: 'Javascript', id: 1 },
       { name: 'Typescript', id: 2 },
@@ -244,7 +243,7 @@ const unfold = (f, seed) => {
       state.drawer = !state.drawer
     },
     CHANGE_EDITOR_BORDER_COLOR(state, payload) {
-      state.editorBorderColor = payload
+      state.project.borderColor = payload
     }
   },
   actions: {

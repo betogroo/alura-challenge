@@ -31,7 +31,7 @@
         ></base-select>
       </v-col>
       <v-col>
-        <base-color-picker></base-color-picker>
+        <base-color-picker :color="project.borderColor"></base-color-picker>
       </v-col>
     </v-row>
     <v-row>
