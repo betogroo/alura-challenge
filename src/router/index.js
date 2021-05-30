@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
 import Editor from '../views/Editor.vue'
 import Community from '../views/Community.vue'
 import Profile from '../views/Profile.vue'
@@ -8,15 +9,26 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/editor/:id',
-    alias: '/:id',
-    name: 'Editor',
-    component: Editor,
-    props: (route) => ({ id: parseInt(route.params.id) || 1 }),
+    path: '/',
+    alias: '/home',
+    name: 'Home',
+    component: Home,
+    props: true,
     meta: {
       title: 'Editor de Código',
       icon: 'xml',
       inDrawer: 1
+    }
+  },
+  {
+    path: '/editor/:id',
+    name: 'Editor',
+    component: Editor,
+    props: true,
+    meta: {
+      title: 'Editor de Código',
+      icon: 'xml',
+      inDrawer: false
     }
   },
   {
