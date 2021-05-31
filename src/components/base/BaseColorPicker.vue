@@ -7,8 +7,8 @@
             <v-card-title class="d-flex align-center">{{ label }}</v-card-title>
           </v-col>
           <v-col>
-          <v-card rounded="lg" v-on="on" height="34" :color="flagColor">
-          </v-card>
+            <v-card rounded="lg" v-on="on" height="34" :color="flagColor">
+            </v-card>
           </v-col>
         </v-row>
       </template>
@@ -27,7 +27,10 @@
 </template>
 
 <script>
-import { BaseFormMixins, BaseTextMixins } from '@/components/base/mixins/BaseMixins.js'
+import {
+  BaseFormMixins,
+  BaseTextMixins
+} from '@/components/base/mixins/BaseMixins.js'
 export default {
   mixins: [BaseFormMixins, BaseTextMixins],
 
@@ -64,7 +67,7 @@ export default {
     }
   } */
 
-  created () {
+  created() {
     this.flagColor = this.color
   }
 }
