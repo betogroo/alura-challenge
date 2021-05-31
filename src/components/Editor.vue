@@ -6,7 +6,7 @@
       flat
       :to="!editable ? { name: 'Editor', params: { id: project.id } } : ''"
       class="ma-1 mb-0"
-      :style="`border: 24px solid ${project.borderColor}`"
+      :style="`border: 24px solid ${project.borderColor || '#FFFFFF'}`"
     >
       <v-card-title class="pa-0 pt-2 pl-4">
         <v-icon
@@ -20,34 +20,37 @@
         </v-icon>
       </v-card-title>
       <v-card-text class="pa-0 pl-1">
-        <template v-if="!editable">
-          <v-card :height="size">{{ project.script }}</v-card>
+        <template v-if="!isHighlight">
+          <v-textarea
+            v-model="form.script"
+            hide-details=""
+            solo
+            :height="size"
+            no-resize
+            rows="5"
+            background-color="#1d262f"
+            @input="updateValue"
+          >
+          </v-textarea>
         </template>
         <template v-else>
-          <template v-if="!isHighlight">
-            <v-textarea
-              hide-details=""
-              solo
-              :value="project.script"
-              :height="size"
-              no-resize
-              rows="5"
-            >
-            </v-textarea>
-          </template>
-          <template v-else>
-            <pre>
-              <code>
-                {{ project.script }}
-              </code>
-            </pre>
-          </template>
+          <div v-highlight :style="`height: ${size-1}px`">
+            <pre :class="`language-javascript`">
+                <code> 
+                  {{ `\n${form.script}` }}
+                </code>
+              </pre>
+          </div>
         </template>
       </v-card-text>
     </v-card>
     <div class="mt-5 mx-1">
       <base-btn-outlined dark block type="button" @click="toggleHighlight">
-        {{ !isHighlight ? 'Visualizar com o Highlight' : 'Visualizar sem o Highlight'}}
+        {{
+          !isHighlight
+            ? 'Visualizar com o Highlight'
+            : 'Editar Código'
+        }}
       </base-btn-outlined>
     </div>
   </div>
@@ -55,6 +58,7 @@
 
 <script>
 import { ProjectMixin } from '@/components/mixins/ComponentMixins.js'
+import 'vue-code-highlight/themes/prism-dark.css'
 export default {
   mixins: [ProjectMixin],
 
@@ -63,7 +67,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#000000'
+      default: '#272822'
     },
     text: {
       type: String,
@@ -85,15 +89,42 @@ export default {
 
   data: () => ({
     macBalls: ['#FF5F56', '#FFBD2E', '#27C93F'],
-    isHighlight: !true
+    isHighlight: !false
   }),
 
   methods: {
     toggleHighlight() {
       this.isHighlight = !this.isHighlight
+    },
+    updateValue(data) {
+      this.$emit('input', data)
     }
   },
+
+  computed: {
+    form() {
+      return this.project
+    }
+  }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.theme--dark.v-card {
+  background-color: #1d262f;
+  color: #ffffff;
+}
+pre[class*="language-"] {
+    width: 99%;
+    padding: 0;
+    margin: 0;
+    margin-top: -40px;
+    padding-left: 10px;
+    overflow: auto;
+    border: inherit;
+    box-shadow: none;
+}
+pre[class*="language-"], :not(pre) > code[class*="language-"] {
+    background: inherit;
+}
+</style>

@@ -1,7 +1,7 @@
 export const BaseFormMixins = {
   props: {
     value: {
-      type: [String, Number],
+      type: [String, Number, Object],
       default: ''
     },
     dark: {

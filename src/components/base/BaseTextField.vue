@@ -6,6 +6,7 @@
       hide-details
       clearable
       @input="updateValue"
+      v-bind="$attrs"
       :value="value"
       :label="label"
       :background-color="
@@ -24,6 +25,7 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
+  inheritAttrs: false,
   mixins: [BaseFormMixins, BaseTextMixins],
 
   name: 'BaseTextField'

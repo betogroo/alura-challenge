@@ -90,18 +90,16 @@ export default new Vuex.Store({
           'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
         comments: 8,
         heart: 6,
-        script: `const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
+        script: `
+const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
 const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
+const go = (f, seed, acc) => {
+const res = f(seed)
+return res ? go(f, res[1], acc.concat([res[0]])) : acc
 }
-        `
+return go(f, seed, [])
+}`
       },
       {
         id: 2,

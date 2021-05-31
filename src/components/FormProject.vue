@@ -12,6 +12,7 @@
         <base-text-field
           dark
           v-model="form.title"
+          :value="project.title"
           label="Nome do seu projeto"
         ></base-text-field>
       </v-col>
@@ -35,14 +36,14 @@
         <base-select
           dark
           :items="languages"
-          :value="projectLanguage"
           v-model="form.language"
         ></base-select>
       </v-col>
       <v-col>
         <base-color-picker
-          :color="project.borderColor"
-          v-model="form.color"
+          @input="updateColor"
+          :color="form.borderColor || '#FFFFFF'"
+          v-model="form.borderColor"
         ></base-color-picker>
       </v-col>
     </v-row>
@@ -62,23 +63,19 @@ export default {
 
   name: 'Formproject',
 
-  data: () => ({
-    form: {}
-  }),
-
   methods: {
-    getLanguage(id) {
-      return this.$store.getters.getLanguageByProjectId(id)
-    },
     testForm() {
       console.log(this.form)
+    },
+    updateColor(data) {
+      this.$emit('updateColor', data)
     }
   },
 
   computed: {
     ...mapState(['languages']),
-    projectLanguage() {
-      return this.getLanguage(this.project.idLanguage)
+    form() {
+      return this.project
     }
   }
 }

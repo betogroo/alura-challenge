@@ -7,19 +7,17 @@
             <v-card-title class="d-flex align-center">{{ label }}</v-card-title>
           </v-col>
           <v-col>
-            <v-card rounded="lg" v-on="on" height="34" :color="flagColor">
-            </v-card>
+            <v-card rounded="lg" v-on="on" height="34" :color="color"></v-card>
           </v-col>
         </v-row>
       </template>
       <v-color-picker
-        v-model="flagColor"
+        v-bind="$attrs"
         dot-size="25"
         hide-mode-switch
         mode="hexa"
         swatches-max-height="250"
-        hide-inputs
-        :value="flagColor"
+        :value="color"
         @input="updateValue"
       ></v-color-picker>
     </v-menu>
@@ -32,6 +30,8 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
+  inheritAttrs: false,
+
   mixins: [BaseFormMixins, BaseTextMixins],
 
   name: 'BaseColorPicker',
@@ -43,33 +43,15 @@ export default {
     }
   },
 
-  data: () => ({
-    flagColor: ''
-  }),
-
+  
   methods: {
-    changeColor(color) {
-      alert(color)
-    },
+    
     updateValue(data) {
       this.$emit('input', data)
     }
   },
 
-  /* computed: {
-    flagColor: {
-      get: function () {
-        return this.color
-      },
-      set: function (color) {
-        this.$emit('update:color', color)
-      }
-    }
-  } */
-
-  created() {
-    this.flagColor = this.color
-  }
+  
 }
 </script>
 

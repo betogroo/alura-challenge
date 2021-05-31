@@ -3,9 +3,11 @@
     <v-select
       hide-details
       solo
+      return-object
       item-text="name"
       item-value="id"
       :value="value"
+      v-bind="$attrs"
       @change="updateValue"
       :items="items"
       :label="label"
@@ -24,6 +26,8 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
+  inheritAttrs: false,
+
   mixins: [BaseFormMixins, BaseTextMixins],
 
   name: 'BaseSelect',
