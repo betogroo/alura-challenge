@@ -3,11 +3,6 @@
     <v-row>
       <v-col cols="12" lg="8">
         <editor editable :size="$vuetify.breakpoint.smAndUp ? '302' : '428'" />
-        <div class="mt-5 mx-1">
-          <base-btn-outlined dark block type="button" @click.prevent="highlight"
-            >Visualizar com o Highlight</base-btn-outlined
-          >
-        </div>
       </v-col>
       <v-col>
         <form-project />
@@ -38,9 +33,6 @@ export default {
   methods: {
     getProject(id) {
       return this.$store.getters.getProjectById(id)
-    },
-    highlight() {
-      alert('Falta Ativar o highlight')
     }
   },
 

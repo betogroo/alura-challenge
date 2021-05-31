@@ -7,11 +7,6 @@
           :project="project"
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
         />
-        <div class="mt-5 mx-1">
-          <base-btn-outlined dark block
-            >Visualizar com o Highlight
-          </base-btn-outlined>
-        </div>
       </v-col>
       <v-col>
         <form-project :project="project" />
