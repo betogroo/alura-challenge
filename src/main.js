@@ -7,6 +7,9 @@ import vuetify from './plugins/vuetify'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
+import VueCodeHighlight from 'vue-code-highlight'
+Vue.use(VueCodeHighlight)
+
 const requireComponent = require.context(
   './components/base',
   false,
