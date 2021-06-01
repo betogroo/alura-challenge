@@ -10,17 +10,17 @@
     <v-row>
       <v-col cols="12">
         <base-text-field
+          label="Nome do seu projeto"
           dark
           v-model="form.title"
           :value="project.title"
-          label="Nome do seu projeto"
         ></base-text-field>
       </v-col>
       <v-col>
         <base-text-area
+          label="Descrição do seu projeto"
           dark
           v-model="form.description"
-          label="Descrição do seu projeto"
         ></base-text-area>
       </v-col>
     </v-row>
@@ -52,6 +52,15 @@
         <base-btn-filled block>Salvar Projeto</base-btn-filled>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ `O projeto ${this.form.title} foi salvo salvo!` }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-form>
 </template>
 
@@ -61,11 +70,16 @@ import { mapState } from 'vuex'
 export default {
   mixins: [ProjectMixin],
 
-  name: 'Formproject',
+  name: 'FormProject',
+
+  data: () => ({
+    snackbar: false,
+    timeout: 2000
+  }),
 
   methods: {
     testForm() {
-      console.log(this.form)
+      this.snackbar = true
     },
     updateColor(data) {
       this.$emit('updateColor', data)

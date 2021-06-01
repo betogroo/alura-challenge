@@ -54,10 +54,10 @@ export default {
           size = 294
           break
         case 'lg':
-          size = 240
+          size = 294
           break
         case 'xl':
-          size = 240
+          size = 294
           break
       }
       return size

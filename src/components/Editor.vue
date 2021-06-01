@@ -11,9 +11,9 @@
       <v-card-title class="pa-0 pt-2 pl-4">
         <v-icon
           v-for="macBall in macBalls"
-          :key="macBall"
           x-small
           left
+          :key="macBall"
           :color="macBall"
         >
           mdi-circle
@@ -23,11 +23,10 @@
         <template v-if="!isHighlight">
           <v-textarea
             v-model="form.script"
-            hide-details=""
+            hide-details
             solo
-            :height="size"
             no-resize
-            rows="5"
+            :height="size"
             background-color="#1d262f"
             @input="updateValue"
           >
@@ -44,7 +43,7 @@
         </template>
       </v-card-text>
     </v-card>
-    <div class="mt-5 mx-1">
+    <div v-if="editable" class="mt-5 mx-1">
       <base-btn-outlined dark block type="button" @click="toggleHighlight">
         {{ !isHighlight ? 'Visualizar com o Highlight' : 'Editar Código' }}
       </base-btn-outlined>
@@ -61,18 +60,6 @@ export default {
   name: 'Editor',
 
   props: {
-    color: {
-      type: String,
-      default: '#272822'
-    },
-    text: {
-      type: String,
-      default: ''
-    },
-    borderColor: {
-      type: String,
-      default: '#6BD1FF'
-    },
     size: {
       type: [String, Number],
       default: '302'

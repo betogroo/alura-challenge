@@ -3,14 +3,14 @@
     <v-row>
       <v-col cols="12" lg="8">
         <editor
+          editable
           @input="updateProject"
           :project="project"
-          editable
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
         />
       </v-col>
       <v-col>
-        <form-project :project="project" @updateColor="updateColor" />
+        <form-project @updateColor="updateColor" :project="project" />
       </v-col>
     </v-row>
   </v-container>
@@ -37,18 +37,11 @@ export default {
 
   data: () => ({
     project: {
-      borderColor: '',
-      script: '',
-      title: '',
-      description: '',
-      language: ''
+      script: ''
     }
   }),
 
   methods: {
-    getProject(id) {
-      return this.$store.getters.getProjectById(id)
-    },
     getLanguage() {
       this.project.language = this.$store.getters.getLanguageByProjectId(
         this.project.idLanguage || 1
