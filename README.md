@@ -95,7 +95,7 @@ src/
 ``` 
 git clone https://github.com/betogroo/alura-challenge.git
 
-cd vue_when_do
+cd alura-challenge
 
 npm install
 ```
