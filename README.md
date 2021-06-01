@@ -42,6 +42,54 @@ A aplicação é responsiva, podendo ser acessada de celular, tablet e desktop, 
 ### Live Preview
 - [Render](https://alura-challenge.onrender.com/)
 
+### Estrutura
+
+```
+src/
+┣ assets/
+┃ ┣ scss/
+┃ ┃ ┗ app.scss
+┃ ┣ logo.svg
+┣ components/
+┃ ┣ base/
+┃ ┃ ┣ mixins/
+┃ ┃ ┃ ┗ BaseMixins.js
+┃ ┃ ┣ BaseBtnFilled.vue
+┃ ┃ ┣ BaseBtnOutlined.vue
+┃ ┃ ┣ BaseColorPicker.vue
+┃ ┃ ┣ BaseSelect.vue
+┃ ┃ ┣ BaseTestText.vue
+┃ ┃ ┣ BaseTextArea.vue
+┃ ┃ ┗ BaseTextField.vue
+┃ ┣ layout/
+┃ ┃ ┣ widget/
+┃ ┃ ┃ ┗ ProfileAvatar.vue
+┃ ┃ ┣ AppBar.vue
+┃ ┃ ┗ ProjectReactions.vue
+┃ ┣ mixins/
+┃ ┃ ┗ ComponentMixins.js
+┃ ┣ Editor.vue
+┃ ┣ FormProject.vue
+┃ ┗ ProjectDetails.vue
+┣ plugins/
+┃ ┗ vuetify.js
+┣ router/
+┃ ┗ index.js
+┣ scss/
+┃ ┣ override.scss
+┃ ┗ variables.scss
+┣ store/
+┃ ┗ index.js
+┣ views/
+┃ ┣ Community.vue
+┃ ┣ Editor.vue
+┃ ┣ Home.vue
+┃ ┗ Profile.vue
+┣ App.vue
+┣ main.js
+┗ registerServiceWorker.js
+```
+
 ## Instalação
 
 ``` 
