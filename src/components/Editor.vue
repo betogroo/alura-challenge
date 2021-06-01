@@ -34,7 +34,7 @@
           </v-textarea>
         </template>
         <template v-else>
-          <div v-highlight :style="`height: ${size-1}px`">
+          <div v-highlight :style="`height: ${size - 1}px`">
             <pre :class="`language-javascript`">
                 <code> 
                   {{ `\n${form.script}` }}
@@ -46,11 +46,7 @@
     </v-card>
     <div class="mt-5 mx-1">
       <base-btn-outlined dark block type="button" @click="toggleHighlight">
-        {{
-          !isHighlight
-            ? 'Visualizar com o Highlight'
-            : 'Editar Código'
-        }}
+        {{ !isHighlight ? 'Visualizar com o Highlight' : 'Editar Código' }}
       </base-btn-outlined>
     </div>
   </div>
@@ -114,17 +110,18 @@ export default {
   background-color: #1d262f;
   color: #ffffff;
 }
-pre[class*="language-"] {
-    width: 99%;
-    padding: 0;
-    margin: 0;
-    margin-top: -40px;
-    padding-left: 10px;
-    overflow: auto;
-    border: inherit;
-    box-shadow: none;
+pre[class*='language-'] {
+  width: 99%;
+  padding: 0;
+  margin: 0;
+  margin-top: -40px;
+  padding-left: 10px;
+  overflow: auto;
+  border: inherit;
+  box-shadow: none;
 }
-pre[class*="language-"], :not(pre) > code[class*="language-"] {
-    background: inherit;
+pre[class*='language-'],
+:not(pre) > code[class*='language-'] {
+  background: inherit;
 }
 </style>

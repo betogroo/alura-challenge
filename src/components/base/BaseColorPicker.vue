@@ -43,15 +43,11 @@ export default {
     }
   },
 
-  
   methods: {
-    
     updateValue(data) {
       this.$emit('input', data)
     }
-  },
-
-  
+  }
 }
 </script>
 

@@ -2,7 +2,12 @@
   <v-container class="pt-0">
     <v-row>
       <v-col cols="12" lg="8">
-        <editor @input="updateProject" :project="project" editable :size="$vuetify.breakpoint.smAndUp ? '302' : '428'" />
+        <editor
+          @input="updateProject"
+          :project="project"
+          editable
+          :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
+        />
       </v-col>
       <v-col>
         <form-project :project="project" @updateColor="updateColor" />
@@ -45,7 +50,9 @@ export default {
       return this.$store.getters.getProjectById(id)
     },
     getLanguage() {
-      this.project.language = this.$store.getters.getLanguageByProjectId(this.project.idLanguage || 1)
+      this.project.language = this.$store.getters.getLanguageByProjectId(
+        this.project.idLanguage || 1
+      )
     },
     updateProject(data) {
       this.project.script = data
