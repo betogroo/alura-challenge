@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="testForm" class="px-2 mt-4">
+  <v-form @submit.prevent="addProject(form)" class="px-2 mt-4">
     <v-row>
       <v-col cols="12">
         <div class="text-subtitle-1 white--text font-weight-light">
@@ -52,15 +52,6 @@
         <base-btn-filled block>Salvar Projeto</base-btn-filled>
       </v-col>
     </v-row>
-    <v-snackbar v-model="snackbar" :timeout="timeout">
-      {{ `O projeto ${this.form.title} foi salvo salvo!` }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
   </v-form>
 </template>
 
@@ -79,10 +70,20 @@ export default {
 
   methods: {
     testForm() {
-      this.snackbar = true
+      console.log(this.form)
     },
     updateColor(data) {
       this.$emit('updateColor', data)
+    },
+    addProject(data) {
+      const idLanguage = data.language.id
+      data.id = Date.now()
+      data.idUser = 1
+      data.comments = 4
+      data.heart = 6
+      data.language = idLanguage
+      this.$store.dispatch('addProject', data)
+      this.$router.push({ name: 'Editor', params: { id: data.id } })
     }
   },
 

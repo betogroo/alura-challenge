@@ -247,6 +247,9 @@ const unfold = (f, seed) => {
     },
     CHANGE_EDITOR_BORDER_COLOR(state, payload) {
       state.project.borderColor = payload
+    },
+    ADD_PROJECT(state, payload) {
+      state.projects.push(payload)
     }
   },
   actions: {
@@ -255,6 +258,11 @@ const unfold = (f, seed) => {
     },
     changeEditorBorderColor({ commit }, payload) {
       commit('CHANGE_EDITOR_BORDER_COLOR', payload)
+    },
+    addProject({ commit }, payload) {
+      return new Promise(() => {
+        commit('ADD_PROJECT', payload)
+      })
     }
   },
   getters: {

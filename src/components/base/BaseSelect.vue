@@ -3,7 +3,6 @@
     <v-select
       hide-details
       solo
-      return-object
       item-text="name"
       item-value="id"
       :value="value"
