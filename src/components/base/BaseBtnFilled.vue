@@ -15,9 +15,9 @@
 <script>
 import { BaseBtnMixins } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  mixins: [BaseBtnMixins],
-
   name: 'BaseButtonFilled',
+
+  mixins: [BaseBtnMixins],
 
   props: {
     color: {

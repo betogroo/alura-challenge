@@ -7,7 +7,7 @@
             <v-card-title class="d-flex align-center">{{ label }}</v-card-title>
           </v-col>
           <v-col>
-            <v-card rounded="lg" v-on="on" height="34" :color="color"></v-card>
+            <v-card rounded="lg" height="34" :color="color" v-on="on"></v-card>
           </v-col>
         </v-row>
       </template>
@@ -30,11 +30,11 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  inheritAttrs: false,
+  name: 'BaseColorPicker',
 
   mixins: [BaseFormMixins, BaseTextMixins],
 
-  name: 'BaseColorPicker',
+  inheritAttrs: false,
 
   props: {
     color: {

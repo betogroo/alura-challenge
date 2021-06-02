@@ -2,12 +2,12 @@
   <v-hover v-slot="{ hover }">
     <v-btn
       depressed
-      v-on="$listeners"
       :type="type"
       :dark="dark"
       :block="block"
       :color="!hover ? color : colorHover"
       :ripple="false"
+      v-on="$listeners"
     >
       <slot />
     </v-btn>
@@ -17,9 +17,9 @@
 <script>
 import { BaseBtnMixins } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  mixins: [BaseBtnMixins],
-
   name: 'BaseButtonOutlined',
+
+  mixins: [BaseBtnMixins],
 
   props: {
     color: {

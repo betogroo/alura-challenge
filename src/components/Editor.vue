@@ -11,9 +11,9 @@
       <v-card-title class="pa-0 pt-2 pl-4">
         <v-icon
           v-for="macBall in macBalls"
+          :key="macBall"
           x-small
           left
-          :key="macBall"
           :color="macBall"
         >
           mdi-circle
@@ -55,9 +55,9 @@
 import { ProjectMixin } from '@/components/mixins/ComponentMixins.js'
 import 'vue-code-highlight/themes/prism-dark.css'
 export default {
-  mixins: [ProjectMixin],
-
   name: 'Editor',
+
+  mixins: [ProjectMixin],
 
   props: {
     size: {
@@ -75,18 +75,18 @@ export default {
     isHighlight: !false
   }),
 
+  computed: {
+    form() {
+      return this.project
+    }
+  },
+
   methods: {
     toggleHighlight() {
       this.isHighlight = !this.isHighlight
     },
     updateValue(data) {
       this.$emit('input', data)
-    }
-  },
-
-  computed: {
-    form() {
-      return this.project
     }
   }
 }

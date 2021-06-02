@@ -4,13 +4,13 @@
       <v-col cols="12" lg="8">
         <editor
           editable
-          @input="updateProject"
           :project="project"
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
+          @input="updateProject"
         />
       </v-col>
       <v-col>
-        <form-project @updateColor="updateColor" :project="project" />
+        <form-project :project="project" @updateColor="updateColor" />
       </v-col>
     </v-row>
   </v-container>
@@ -41,6 +41,14 @@ export default {
     }
   }),
 
+  computed: {
+    ...mapState(['loggedUser'])
+  },
+
+  created() {
+    this.getLanguage()
+  },
+
   methods: {
     getLanguage() {
       this.project.language = this.$store.getters.getLanguageByProjectId(
@@ -53,14 +61,6 @@ export default {
     updateColor(data) {
       this.project.borderColor = data
     }
-  },
-
-  computed: {
-    ...mapState(['loggedUser'])
-  },
-
-  created() {
-    this.getLanguage()
   }
 }
 </script>

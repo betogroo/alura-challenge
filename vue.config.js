@@ -8,5 +8,7 @@ module.exports = {
     manifestOptions: {
       background_color: '#051D3B'
     }
-  }
+  },
+
+  lintOnSave: true
 }

@@ -12,14 +12,14 @@
 
       <template v-if="$vuetify.breakpoint.smAndUp || search">
         <base-text-field
+          v-model="form.search"
           dense
           dark
-          v-model="form.search"
           label="Busque por algo"
         ></base-text-field>
       </template>
       <template v-if="$vuetify.breakpoint.xsOnly">
-        <v-btn @click.stop="search = !search" icon dark class="ml-3">
+        <v-btn icon dark class="ml-3" @click.stop="search = !search">
           <v-icon size="32">{{ !search ? 'mdi-magnify' : 'mdi-close' }}</v-icon>
         </v-btn>
       </template>
@@ -28,13 +28,13 @@
       <template v-if="$vuetify.breakpoint.mdAndDown">
         <v-app-bar-nav-icon class="pl-2">
           <v-btn
+            v-ripple="false"
             text
             width="38"
             height="38"
             color="white"
             icon
             @click.stop="toggleDrawer"
-            v-ripple="false"
           >
             <v-icon size="30">{{ !drawer ? 'mdi-menu' : 'mdi-close' }}</v-icon>
           </v-btn>
@@ -66,9 +66,9 @@
         <v-subheader v-if="$vuetify.breakpoint.lgAndUp">Menu</v-subheader>
         <v-list-item-group :value="selectedItem">
           <v-list-item
-            :to="{ name: item.name }"
             v-for="(item, i) in drawerRouters"
             :key="i"
+            :to="{ name: item.name }"
             class="mb-4"
           >
             <template v-slot:default="{ active }">
@@ -91,10 +91,10 @@
                   </v-sheet>
                   <v-list-item-content class="menu pl-5">
                     <v-list-item-title
-                      v-text="item.meta.title"
                       :style="
                         active ? '' : hover ? 'opacity: 72%;' : 'opacity: 56%;'
                       "
+                      v-text="item.meta.title"
                     />
                   </v-list-item-content>
                 </div>
@@ -132,13 +132,6 @@ export default {
     }
   }),
 
-  methods: {
-    toggleDrawer() {
-      this.drawer = !this.drawer
-      this.search = false
-    }
-  },
-
   computed: {
     drawerRouters() {
       return this.$router.options.routes.filter(
@@ -146,6 +139,13 @@ export default {
       )
     },
     ...mapState(['loggedUser'])
+  },
+
+  methods: {
+    toggleDrawer() {
+      this.drawer = !this.drawer
+      this.search = false
+    }
   }
 }
 </script>

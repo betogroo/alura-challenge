@@ -26,16 +26,6 @@ export default {
     ProjectDetails
   },
 
-  methods: {
-    sliceProjects(rows) {
-      let slicedProjects = []
-      for (let i = 0; i < this.projects.length; i = i + rows) {
-        slicedProjects.push(this.projects.slice(i, i + rows))
-      }
-      return slicedProjects
-    }
-  },
-
   computed: {
     slicedProjects() {
       return this.sliceProjects(2)
@@ -61,6 +51,16 @@ export default {
           break
       }
       return size
+    }
+  },
+
+  methods: {
+    sliceProjects(rows) {
+      let slicedProjects = []
+      for (let i = 0; i < this.projects.length; i = i + rows) {
+        slicedProjects.push(this.projects.slice(i, i + rows))
+      }
+      return slicedProjects
     }
   }
 }

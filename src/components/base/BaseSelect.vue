@@ -7,7 +7,6 @@
       item-value="id"
       :value="value"
       v-bind="$attrs"
-      @change="updateValue"
       :items="items"
       :label="label"
       :background-color="
@@ -15,6 +14,7 @@
       "
       :dark="dark"
       :dense="dense"
+      @change="updateValue"
     ></v-select>
   </v-hover>
 </template>
@@ -25,11 +25,11 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  inheritAttrs: false,
+  name: 'BaseSelect',
 
   mixins: [BaseFormMixins, BaseTextMixins],
 
-  name: 'BaseSelect',
+  inheritAttrs: false,
 
   props: {
     items: {

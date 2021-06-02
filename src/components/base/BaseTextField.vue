@@ -5,7 +5,6 @@
       flat
       hide-details
       clearable
-      @input="updateValue"
       v-bind="$attrs"
       :value="value"
       :label="label"
@@ -14,6 +13,7 @@
       "
       :dense="dense"
       :dark="dark"
+      @input="updateValue"
     >
     </v-text-field>
   </v-hover>
@@ -25,11 +25,8 @@ import {
   BaseTextMixins
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
-  inheritAttrs: false,
+  name: 'BaseTextField',
   mixins: [BaseFormMixins, BaseTextMixins],
-
-  name: 'BaseTextField'
+  inheritAttrs: false
 }
 </script>
-
-<style></style>

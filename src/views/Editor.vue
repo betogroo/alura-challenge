@@ -34,16 +34,16 @@ export default {
     }
   },
 
-  methods: {
-    getProject(id) {
-      return this.$store.getters.getProjectById(id)
-    }
-  },
-
   computed: {
     ...mapState(['loggedUser']),
     project() {
       return this.getProject(this.id)
+    }
+  },
+
+  methods: {
+    getProject(id) {
+      return this.$store.getters.getProjectById(id)
     }
   }
 }

@@ -8,9 +8,9 @@
         !hover ? 'rgba(255, 255, 255, 0.16)' : 'rgba(255, 255, 255, 0.24)'
       "
       :dark="dark"
-      @input="updateValue"
       :value="value"
       :label="label"
+      @input="updateValue"
     ></v-textarea>
   </v-hover>
 </template>
@@ -22,10 +22,7 @@ import {
 } from '@/components/base/mixins/BaseMixins.js'
 
 export default {
-  mixins: [BaseFormMixins, BaseTextMixins],
-
-  name: 'BaseTextArea'
+  name: 'BaseTextArea',
+  mixins: [BaseFormMixins, BaseTextMixins]
 }
 </script>
-
-<style></style>
