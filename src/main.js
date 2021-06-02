@@ -33,6 +33,7 @@ requireComponent.keys().forEach((fileName) => {
 Vue.config.productionTip = false
 
 new Vue({
+  name: 'Main',
   router,
   store,
   vuetify,

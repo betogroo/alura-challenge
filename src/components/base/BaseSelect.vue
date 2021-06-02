@@ -35,8 +35,7 @@ export default {
     items: {
       type: Array,
       required: true
-    },
-    item: Object
+    }
   },
 
   computed: {
