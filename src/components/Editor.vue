@@ -21,7 +21,9 @@
           </v-icon>
         </div>
         <div>
-          <v-icon v-if="project.language" large>mdi-language-{{ project.language.name.toLowerCase()}}</v-icon>
+          <v-icon v-if="project.language" large
+            >mdi-language-{{ project.language.name.toLowerCase() }}</v-icon
+          >
         </div>
       </v-card-title>
       <v-card-text class="pa-0 pl-1">
