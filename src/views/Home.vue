@@ -6,11 +6,15 @@
           editable
           :project="project"
           :size="$vuetify.breakpoint.smAndUp ? '302' : '428'"
-          @input="updateProject"
+          @input="updateScript"
         />
       </v-col>
       <v-col>
-        <form-project :project="project" @updateColor="updateColor" />
+        <form-project
+          :project="project"
+          @updateColor="updateColor"
+          @action="addProject(project)"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -39,11 +43,15 @@ export default {
   },
 
   methods: {
-    updateProject(data) {
+    updateScript(data) {
       this.project.script = data
     },
     updateColor(data) {
       this.project.borderColor = data
+    },
+    addProject(project) {
+      project.id = Date.now()
+      console.log(project)
     }
   }
 }

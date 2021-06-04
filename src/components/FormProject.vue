@@ -1,5 +1,5 @@
 <template>
-  <v-form class="px-2 mt-4" @submit.prevent="action(form)">
+  <v-form class="px-2 mt-4" @submit.prevent="action">
     <v-row>
       <v-col cols="12">
         <div class="text-subtitle-1 white--text font-weight-light">
@@ -75,17 +75,8 @@ export default {
     updateColor(data) {
       this.$emit('updateColor', data)
     },
-    action(data) {
-      const idLanguage = data.language.id
-      data.id = Date.now()
-      data.idUser = 1
-      data.idLanguage = idLanguage
-      data.comments = 4
-      data.heart = 6
-      //this.$emit('action', data)
-      console.log(data)
-      //this.$store.dispatch('addProject', data)
-      // this.$router.push({ name: 'Editor', params: { id: data.id } })
+    action() {
+      this.$emit('action')
     }
   }
 }
