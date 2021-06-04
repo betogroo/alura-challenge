@@ -31,9 +31,7 @@ import {
 } from '@/components/base/mixins/BaseMixins.js'
 export default {
   name: 'BaseColorPicker',
-
   mixins: [BaseFormMixins, BaseTextMixins],
-
   inheritAttrs: false,
 
   props: {
