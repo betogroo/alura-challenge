@@ -1,5 +1,5 @@
 <template>
-  <v-form class="px-2 mt-4" @submit.prevent="addProject(form)">
+  <v-form class="px-2 mt-4" @submit.prevent="action(form)">
     <v-row>
       <v-col cols="12">
         <div class="text-subtitle-1 white--text font-weight-light">
@@ -37,6 +37,7 @@
           v-model="form.language"
           dark
           :items="languages"
+          label="Linguagem"
         ></base-select>
       </v-col>
       <v-col>
@@ -63,11 +64,6 @@ export default {
 
   mixins: [ProjectMixin],
 
-  data: () => ({
-    snackbar: false,
-    timeout: 2000
-  }),
-
   computed: {
     ...mapState(['languages']),
     form() {
@@ -76,21 +72,20 @@ export default {
   },
 
   methods: {
-    testForm() {
-      console.log(this.form)
-    },
     updateColor(data) {
       this.$emit('updateColor', data)
     },
-    addProject(data) {
+    action(data) {
       const idLanguage = data.language.id
       data.id = Date.now()
       data.idUser = 1
+      data.idLanguage = idLanguage
       data.comments = 4
       data.heart = 6
-      data.language = idLanguage
-      this.$store.dispatch('addProject', data)
-      this.$router.push({ name: 'Editor', params: { id: data.id } })
+      //this.$emit('action', data)
+      console.log(data)
+      //this.$store.dispatch('addProject', data)
+      // this.$router.push({ name: 'Editor', params: { id: data.id } })
     }
   }
 }

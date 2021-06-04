@@ -1,6 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-select
+      return-object
       hide-details
       solo
       item-text="name"
@@ -41,7 +42,7 @@ export default {
   computed: {
     language: {
       get: function () {
-        return this.item
+        return this.value
       },
       set: function () {}
     }

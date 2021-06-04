@@ -13,7 +13,6 @@ const routes = [
     alias: '/home',
     name: 'Home',
     component: Home,
-    props: true,
     meta: {
       title: 'Editor de Código',
       icon: 'xml',

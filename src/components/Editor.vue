@@ -8,16 +8,21 @@
       class="ma-1 mb-0"
       :style="`border: 24px solid ${project.borderColor || '#FFFFFF'}`"
     >
-      <v-card-title class="pa-0 pt-2 pl-4">
-        <v-icon
-          v-for="macBall in macBalls"
-          :key="macBall"
-          x-small
-          left
-          :color="macBall"
-        >
-          mdi-circle
-        </v-icon>
+      <v-card-title class="d-flex justify-space-between pa-0 pt-2 px-4">
+        <div>
+          <v-icon
+            v-for="macBall in macBalls"
+            :key="macBall"
+            x-small
+            left
+            :color="macBall"
+          >
+            mdi-circle
+          </v-icon>
+        </div>
+        <div>
+          <v-icon v-if="project.language" large>mdi-language-{{ project.language.name.toLowerCase()}}</v-icon>
+        </div>
       </v-card-title>
       <v-card-text class="pa-0 pl-1">
         <template v-if="!isHighlight">

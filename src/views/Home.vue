@@ -21,18 +21,11 @@ import { mapState } from 'vuex'
 import Editor from '@/components/Editor.vue'
 import FormProject from '@/components/FormProject.vue'
 export default {
-  name: 'ViewHome',
+  name: 'Home',
 
   components: {
     Editor,
     FormProject
-  },
-
-  props: {
-    id: {
-      type: [String, Number],
-      default: 1
-    }
   },
 
   data: () => ({
@@ -45,16 +38,7 @@ export default {
     ...mapState(['loggedUser'])
   },
 
-  created() {
-    this.getLanguage()
-  },
-
   methods: {
-    getLanguage() {
-      this.project.language = this.$store.getters.getLanguageByProjectId(
-        this.project.idLanguage || 1
-      )
-    },
     updateProject(data) {
       this.project.script = data
     },
