@@ -7,10 +7,13 @@ export default new Vuex.Store({
   state: {
     drawer: null,
     languages: [
-      { name: 'Javascript', id: 1 },
-      { name: 'Typescript', id: 2 },
-      { name: 'PHP', id: 3 },
-      { name: 'Python', id: 4 }
+      { name: 'Javascript', id: 1, code: 'javascript', icon: 'javascript' },
+      { name: 'CSS', id: 3, code: 'css', icon: 'css3' },
+      { name: 'HTML', id: 5, code: 'html', icon: 'html5' }
+      // { name: 'Typescript', id: 2 },
+      // { name: 'Python', id: 4 },
+
+      // { name: 'Lua', id: 7 }
     ],
     loggedUser: {
       id: 0,
@@ -84,14 +87,19 @@ export default new Vuex.Store({
         id: 1,
         idUser: 0,
         idLanguage: 1,
+        language: {
+          name: 'Javascript',
+          id: 1,
+          code: 'javascript',
+          icon: 'javascript'
+        },
         title: 'Projeto Novo',
         borderColor: '#7A8B23',
         description:
           'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
         comments: 8,
         heart: 6,
-        script: `
-const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
+        script: `const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
 const unfold = (f, seed) => {
 const go = (f, seed, acc) => {
@@ -104,92 +112,105 @@ return go(f, seed, [])
       {
         id: 2,
         idUser: 1,
-        idLanguage: 2,
+        idLanguage: 3,
+        language: {
+          name: 'CSS',
+          id: 3,
+          code: 'css',
+          icon: 'css3'
+        },
         title: 'Título do Projeto 2',
         borderColor: '#61238B',
         description:
           'Orci varius natoque penatibus et typescript ep amagnis dis parturient.',
         comments: 4,
         heart: 7,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
+        script: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Página do Beto</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
         `
       },
       {
         id: 3,
         idUser: 4,
         idLanguage: 1,
-        title: 'Título do Projeto 3',
+        language: {
+          name: 'Javascript',
+          id: 1,
+          code: 'javascript',
+          icon: 'javascript'
+        },
+        title: 'Base Components',
         borderColor: '#8B2A23',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 2,
         heart: 8,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
-        `
+        script: `requireComponent.keys().forEach((fileName) => {
+  const componentConfig = requireComponent(fileName)
+  const componentName = upperFirst(
+    camelCase(
+      fileName
+        .split('/')
+        .pop()
+        .replace(/.w+$/, '')
+    )
+  )
+  Vue.component(componentName, componentConfig.default || componentConfig)
+})`
       },
       {
         id: 4,
         idUser: 3,
-        idLanguage: 1,
+        idLanguage: 5,
+        language: {
+          name: 'HTML',
+          id: 5,
+          code: 'html',
+          icon: 'html5'
+        },
         title: 'Título do Projeto 4',
         borderColor: '#238B59',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 1,
         heart: 6,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
+        script: `<body>
+  <b>Negrito<b/>
+  <a href="link.com">Link</a>
+</body>
         `
       },
       {
         id: 5,
         idUser: 5,
-        idLanguage: 1,
+        idLanguage: 3,
+        language: {
+          name: 'CSS',
+          id: 3,
+          code: 'css',
+          icon: 'css3'
+        },
         title: 'Título do Projeto 5',
         borderColor: '#FFFFFF',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 12,
         heart: 14,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
+        script: `.colorpicker {
+  height: 48px;
+  padding: 6px;
+  background-color: #051d3b !important;
+  border: 1px solid white !important;
+  border-radius: 8px !important;
 }
         `
       },
@@ -197,47 +218,54 @@ const unfold = (f, seed) => {
         id: 6,
         idUser: 7,
         idLanguage: 1,
+        language: {
+          name: 'Javascript',
+          id: 1,
+          code: 'javascript',
+          icon: 'javascript'
+        },
         title: 'Título do Projeto 6',
         borderColor: '#BABACA',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
         heart: 16,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+        script: `  mutations: {
+  TOGGLE_DRAWER(state) {
+    state.drawer = !state.drawer
+  },
+  CHANGE_EDITOR_BORDER_COLOR(state, payload) {
+    state.project.borderColor = payload
+  },
+  ADD_PROJECT(state, payload) {
+    state.projects.push(payload)
   }
-  return go(f, seed, [])
-}
-        `
+}`
       },
       {
         id: 0,
         idUser: 7,
         idLanguage: 1,
+        language: {
+          name: 'Javascript',
+          id: 1,
+          code: 'javascript',
+          icon: 'javascript'
+        },
         title: 'Título do Projeto 6',
         borderColor: '#BABACA',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
         heart: 16,
-        script: `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
-        `
+        script: `actions: {
+  toggleDrawer({ commit }) {
+    commit('TOGGLE_DRAWER')
+  },
+  changeEditorBorderColor({ commit }, payload) {
+    commit('CHANGE_EDITOR_BORDER_COLOR', payload)
+  },
+}`
       }
     ]
   },

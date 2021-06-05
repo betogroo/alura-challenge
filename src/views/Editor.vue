@@ -9,7 +9,7 @@
         />
       </v-col>
       <v-col>
-        <form-project :project="project" />
+        <form-project :project="project" @action="updateProject(project)" />
       </v-col>
     </v-row>
   </v-container>
@@ -44,6 +44,9 @@ export default {
   methods: {
     getProject(id) {
       return this.$store.getters.getProjectById(id)
+    },
+    updateProject(project) {
+      console.log(project)
     }
   }
 }

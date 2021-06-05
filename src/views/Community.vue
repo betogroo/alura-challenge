@@ -38,16 +38,16 @@ export default {
           size = 354
           break
         case 'sm':
-          size = 294
+          size = 390
           break
         case 'md':
-          size = 294
+          size = 390
           break
         case 'lg':
-          size = 294
+          size = 390
           break
         case 'xl':
-          size = 294
+          size = 390
           break
       }
       return size

@@ -7,6 +7,7 @@
       :to="!editable ? { name: 'Editor', params: { id: project.id } } : ''"
       class="ma-1 mb-0"
       :style="`border: 24px solid ${project.borderColor || '#FFFFFF'}`"
+      :height="size"
     >
       <v-card-title class="d-flex justify-space-between pa-0 pt-2 px-4">
         <div>
@@ -22,7 +23,7 @@
         </div>
         <div>
           <v-icon v-if="project.language" large
-            >mdi-language-{{ project.language.name.toLowerCase() }}</v-icon
+            >mdi-language-{{ project.language.icon }}</v-icon
           >
         </div>
       </v-card-title>
@@ -31,17 +32,21 @@
           <v-textarea
             v-model="form.script"
             hide-details
+            flat
             solo
             no-resize
-            :height="size"
             background-color="#1d262f"
             @input="updateValue"
           >
           </v-textarea>
         </template>
         <template v-else>
-          <div v-highlight :style="`height: ${size - 1}px`">
-            <pre :class="`language-javascript`">
+          <div v-highlight>
+            <pre
+              :class="`language-${
+                project.language ? project.language.code : ''
+              }`"
+            >
                 <code> 
                   {{ `\n${form.script}` }}
                 </code>
