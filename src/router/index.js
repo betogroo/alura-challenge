@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Editor from '../views/Editor.vue'
+import Project from '../views/Project.vue'
 import Community from '../views/Community.vue'
 import Profile from '../views/Profile.vue'
 
@@ -20,12 +20,12 @@ const routes = [
     }
   },
   {
-    path: '/editor/:id',
-    name: 'Editor',
-    component: Editor,
+    path: '/project/:id',
+    name: 'Project',
+    component: Project,
     props: true,
     meta: {
-      title: 'Editor de Código',
+      title: 'Projeto',
       icon: 'xml',
       inDrawer: false
     }

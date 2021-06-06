@@ -20,7 +20,7 @@ import { mapState } from 'vuex'
 import Editor from '@/components/Editor.vue'
 import FormProject from '@/components/FormProject.vue'
 export default {
-  name: 'ViewEditor',
+  name: 'Project',
 
   components: {
     Editor,

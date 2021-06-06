@@ -4,7 +4,7 @@
       outlined
       dark
       flat
-      :to="!editable ? { name: 'Editor', params: { id: project.id } } : ''"
+      :to="!editable ? { name: 'Project', params: { id: project.id } } : ''"
       class="ma-1 mb-0"
       :style="`border: 24px solid ${project.borderColor || '#FFFFFF'}`"
       :height="size"
