@@ -52,8 +52,8 @@ export default {
     addProject(project) {
       project.id = Date.now()
       project.idUser = this.loggedUser.id
-      project.comments = 8
-      project.heart = 6
+      project.comments = 0
+      project.heart = []
       this.$store.dispatch('addProject', project)
     }
   }

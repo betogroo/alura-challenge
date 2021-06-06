@@ -280,14 +280,14 @@ return go(f, seed, [])
       state.projects.push(payload)
     },
     TOGGLE_HEART(state, { project, user }) {
-      const idProject = state.projects.findIndex((item) => item.id === project)
-      const check = state.projects[idProject].heart.findIndex(
+      const index = state.projects.findIndex((item) => item.id === project)
+      const check = state.projects[index].heart.findIndex(
         (item) => item === user
       )
       if (check === -1) {
-        state.projects[idProject].heart.push(user)
+        state.projects[index].heart.push(user)
       } else {
-        state.projects[idProject].heart.splice(check, 1)
+        state.projects[index].heart.splice(check, 1)
       }
     }
   },
@@ -317,10 +317,10 @@ return go(f, seed, [])
     getLanguageByProjectId: (state) => (id) => {
       return state.languages.find((language) => language.id === id)
     },
-    isHearted: (state, getters) => (project, user) => {
+    getHeart: (_, getters) => (project, user) => {
       const heart = getters.getProjectById(project).heart
-      const check = heart.findIndex((item) => item === user)
-      return check === -1 ? false : true
+      const check = heart.find((item) => item === user)
+      return check === undefined ? false : true
     }
   },
   modules: {}

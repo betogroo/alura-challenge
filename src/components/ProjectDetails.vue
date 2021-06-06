@@ -35,7 +35,7 @@
 <script>
 import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
 import ProjectReactions from '@/components/layout/ProjectReactions.vue'
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'ProjectDetails',
 
@@ -52,13 +52,18 @@ export default {
   },
 
   data: () => ({
-    // heart: !true
+    isHearted: false
   }),
   computed: {
     ...mapState(['loggedUser']),
-    isHearted() {
-      return this.$store.getters.isHearted(this.project.id, this.loggedUser.id)
-    }
+    ...mapGetters(['getHeart'])
+    /* isHearted() {
+      return this.getHeart(this.project.id, this.loggedUser.id)
+    } */
+  },
+
+  created() {
+    this.isHearted = this.getHeart(this.project.id, this.loggedUser.id)
   },
 
   methods: {
@@ -72,6 +77,7 @@ export default {
     toggleHeart(project) {
       const user = this.loggedUser.id
       this.$store.dispatch('toggleHeart', { project, user })
+      this.isHearted = this.getHeart(project, user)
     }
   }
 }
