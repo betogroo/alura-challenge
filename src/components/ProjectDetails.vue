@@ -14,10 +14,13 @@
         <project-reactions
           reactionType="comments"
           :itemCount="project.comments"
+          @action="goToComments(project.id)"
         ></project-reactions>
         <project-reactions
           reactionType="heart"
-          :itemCount="project.heart"
+          :itemCount="project.heart.length"
+          :isActive="isHearted"
+          @action="toggleHeart(project.id)"
         ></project-reactions>
 
         <v-spacer></v-spacer>
@@ -32,7 +35,7 @@
 <script>
 import ProfileAvatar from '@/components/layout/widget/ProfileAvatar.vue'
 import ProjectReactions from '@/components/layout/ProjectReactions.vue'
-
+import { mapState } from 'vuex'
 export default {
   name: 'ProjectDetails',
 
@@ -48,10 +51,27 @@ export default {
     }
   },
 
+  data: () => ({
+    // heart: !true
+  }),
+  computed: {
+    ...mapState(['loggedUser']),
+    isHearted() {
+      return this.$store.getters.isHearted(this.project.id, this.loggedUser.id)
+    }
+  },
+
   methods: {
     getUser(id) {
       const user = this.$store.getters.getUserById(id)
       return user
+    },
+    goToComments(id) {
+      this.$router.push({ name: 'ProjectComments', params: { id: id } })
+    },
+    toggleHeart(project) {
+      const user = this.loggedUser.id
+      this.$store.dispatch('toggleHeart', { project, user })
     }
   }
 }

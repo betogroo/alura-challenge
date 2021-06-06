@@ -6,9 +6,9 @@
     max-width="58"
     width="58"
     height="40"
-    @click.stop="reactionType === 'heart' ? toggleHeart() : goToComments()"
+    @click.stop="action"
   >
-    <v-icon lang="ma-3" left :color="heart ? 'red' : ''">
+    <v-icon lang="ma-3" left :color="isActive ? activeIconColor : ''">
       mdi-{{ reactionType === 'comments' ? 'chat' : 'heart' }}
     </v-icon>
     {{ itemCount }}
@@ -27,19 +27,23 @@ export default {
     reactionType: {
       type: String,
       default: 'comments'
+    },
+    isActive: {
+      type: Boolean,
+      default: !true
+    },
+    activeIconColor: {
+      type: String,
+      default: 'red'
     }
   },
-
-  data: () => ({
-    heart: false
-  }),
 
   methods: {
     toggleHeart() {
       this.heart = !this.heart
     },
-    goToComments() {
-      this.$router.push({ name: 'ProjectComments', params: { id: 2 } })
+    action() {
+      this.$emit('action')
     }
   }
 }

@@ -98,7 +98,7 @@ export default new Vuex.Store({
         description:
           'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
         comments: 8,
-        heart: 6,
+        heart: [1, 3, 5],
         script: `const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
 const unfold = (f, seed) => {
@@ -124,7 +124,7 @@ return go(f, seed, [])
         description:
           'Orci varius natoque penatibus et typescript ep amagnis dis parturient.',
         comments: 4,
-        heart: 7,
+        heart: [5, 0],
         script: `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -153,7 +153,7 @@ return go(f, seed, [])
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 2,
-        heart: 8,
+        heart: [1],
         script: `requireComponent.keys().forEach((fileName) => {
   const componentConfig = requireComponent(fileName)
   const componentName = upperFirst(
@@ -182,7 +182,7 @@ return go(f, seed, [])
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 1,
-        heart: 6,
+        heart: [1, 2, 3, 4, 5, 6],
         script: `<body>
   <b>Negrito<b/>
   <a href="link.com">Link</a>
@@ -204,7 +204,7 @@ return go(f, seed, [])
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 12,
-        heart: 14,
+        heart: [1, 3, 5, 6],
         script: `.colorpicker {
   height: 48px;
   padding: 6px;
@@ -229,7 +229,7 @@ return go(f, seed, [])
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
-        heart: 16,
+        heart: [3, 5],
         script: `  mutations: {
   TOGGLE_DRAWER(state) {
     state.drawer = !state.drawer
@@ -257,7 +257,7 @@ return go(f, seed, [])
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
         comments: 11,
-        heart: 16,
+        heart: [1, 2, 3, 5],
         script: `actions: {
   toggleDrawer({ commit }) {
     commit('TOGGLE_DRAWER')
@@ -278,6 +278,17 @@ return go(f, seed, [])
     },
     ADD_PROJECT(state, payload) {
       state.projects.push(payload)
+    },
+    TOGGLE_HEART(state, { project, user }) {
+      const idProject = state.projects.findIndex((item) => item.id === project)
+      const check = state.projects[idProject].heart.findIndex(
+        (item) => item === user
+      )
+      if (check === -1) {
+        state.projects[idProject].heart.push(user)
+      } else {
+        state.projects[idProject].heart.splice(check, 1)
+      }
     }
   },
   actions: {
@@ -291,6 +302,9 @@ return go(f, seed, [])
       return new Promise(() => {
         commit('ADD_PROJECT', payload)
       })
+    },
+    toggleHeart({ commit }, payload) {
+      commit('TOGGLE_HEART', payload)
     }
   },
   getters: {
@@ -302,6 +316,11 @@ return go(f, seed, [])
     },
     getLanguageByProjectId: (state) => (id) => {
       return state.languages.find((language) => language.id === id)
+    },
+    isHearted: (state, getters) => (project, user) => {
+      const heart = getters.getProjectById(project).heart
+      const check = heart.findIndex((item) => item === user)
+      return check === -1 ? false : true
     }
   },
   modules: {}
