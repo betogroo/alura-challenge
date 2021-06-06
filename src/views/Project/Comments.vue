@@ -1,12 +1,18 @@
 <template>
-  <h1>
-    Comentários do projeto {{ project.title }}
-  </h1>
+  <h1>Comentários do projeto {{ project.title }}</h1>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'ProjectComments',
+
+  props: {
+    project: {
+      type: Object,
+      required: true
+    }
+  }
+}
 </script>
 
-<style>
-</style>
+<style></style>

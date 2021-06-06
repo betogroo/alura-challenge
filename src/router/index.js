@@ -38,7 +38,7 @@ const routes = [
         component: Edit
       },
       {
-        path: 'edit',
+        path: 'comments',
         name: 'ProjectComments',
         component: Comments
       }

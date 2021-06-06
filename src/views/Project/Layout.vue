@@ -1,7 +1,8 @@
 <template>
   <v-container class="pt-0">
-    <router-link :to="{ name: 'ProjectEdit' }"><v-btn>Editar</v-btn></router-link>
-    <router-view :project="project" />
+    <div v-if="project">
+      <router-view :project="project" />
+    </div>
   </v-container>
 </template>
 
