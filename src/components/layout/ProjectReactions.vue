@@ -6,7 +6,7 @@
     max-width="58"
     width="58"
     height="40"
-    @click.stop="reactionType === 'heart' ? toggleHeart() : ''"
+    @click.stop="reactionType === 'heart' ? toggleHeart() : goToComments()"
   >
     <v-icon lang="ma-3" left :color="heart ? 'red' : ''">
       mdi-{{ reactionType === 'comments' ? 'chat' : 'heart' }}
@@ -37,6 +37,9 @@ export default {
   methods: {
     toggleHeart() {
       this.heart = !this.heart
+    },
+    goToComments() {
+      this.$router.push({ name: 'ProjectComments', params: { id: 2 } })
     }
   }
 }

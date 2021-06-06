@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Project from '../views/Project.vue'
+import Layout from '../views/Project/Layout.vue'
+import Details from '../views/Project/Details.vue'
+import Edit from '../views/Project/Edit.vue'
+import Comments from '../views/Project/Comments.vue'
 import Community from '../views/Community.vue'
 import Profile from '../views/Profile.vue'
 
@@ -21,9 +24,25 @@ const routes = [
   },
   {
     path: '/project/:id',
-    name: 'Project',
-    component: Project,
+    component: Layout,
     props: true,
+    children: [
+      {
+        path: '',
+        name: 'Project',
+        component: Details
+      },
+      {
+        path: 'edit',
+        name: 'ProjectEdit',
+        component: Edit
+      },
+      {
+        path: 'edit',
+        name: 'ProjectComments',
+        component: Comments
+      }
+    ],
     meta: {
       title: 'Projeto',
       icon: 'xml',

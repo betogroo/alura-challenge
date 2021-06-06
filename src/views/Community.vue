@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pt-0">
     <v-row v-for="(row, i) in slicedProjects" :key="i">
       <v-col
         v-for="(project, i) in row"

@@ -1,6 +1,5 @@
 <template>
-  <v-container class="pt-0">
-    <v-row>
+  <v-row>
       <v-col cols="12" lg="8">
         <editor
           editable
@@ -12,15 +11,13 @@
         <form-project :project="project" @action="updateProject(project)" />
       </v-col>
     </v-row>
-  </v-container>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import Editor from '@/components/Editor.vue'
 import FormProject from '@/components/FormProject.vue'
 export default {
-  name: 'Project',
+  name: 'ProjectDetails',
 
   components: {
     Editor,
@@ -28,26 +25,13 @@ export default {
   },
 
   props: {
-    id: {
-      type: [String, Number],
-      default: 1
-    }
-  },
-
-  computed: {
-    ...mapState(['loggedUser']),
-    project() {
-      return this.getProject(this.id)
-    }
-  },
-
-  methods: {
-    getProject(id) {
-      return this.$store.getters.getProjectById(id)
-    },
-    updateProject(project) {
-      console.log(project)
+    project: {
+      type: Object,
+      required: true
     }
   }
 }
 </script>
+
+<style>
+</style>
