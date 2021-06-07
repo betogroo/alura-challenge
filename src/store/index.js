@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const delay = (amount = 2000) => new Promise(resolve => setTimeout(resolve, amount))
+const delay = (amount = 2000) =>
+  new Promise((resolve) => setTimeout(resolve, amount))
 
 export default new Vuex.Store({
   state: {
@@ -100,7 +101,28 @@ export default new Vuex.Store({
         borderColor: '#7A8B23',
         description:
           'Lorem ipsum dolor sit amet, javascript, consectetur adipiscing elit. Donec vestibulum consectetur nibh, in semper magna. Vestibulum dignissim nisl id fringilla.',
-        comments: 8,
+        comments: [
+          {
+            id: '1',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Dui ut ornare lectus sit.'
+          },
+          {
+            id: '2',
+            comment:
+              'arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim'
+          },
+          {
+            id: '3',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium quam vulputate dignissim suspendisse in est ante in nibh. Ultrices neque ornare aenean euismod elementum nisi quis eleifend.'
+          },
+          {
+            id: '4',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing.'
+          }
+        ],
         heart: [1, 3, 5],
         script: `const betogroo = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
@@ -126,7 +148,23 @@ return go(f, seed, [])
         borderColor: '#61238B',
         description:
           'Orci varius natoque penatibus et typescript ep amagnis dis parturient.',
-        comments: 4,
+        comments: [
+          {
+            id: '5',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          },
+          {
+            id: '6',
+            comment:
+              'arcu felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim'
+          },
+          {
+            id: '7',
+            comment:
+              'eget nullam non nisi est sit amet facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie nunc non blandit massa enim nec dui nunc mattis enim'
+          }
+        ],
         heart: [5, 0],
         script: `<!DOCTYPE html>
 <html lang="en">
@@ -155,7 +193,18 @@ return go(f, seed, [])
         borderColor: '#8B2A23',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
-        comments: 2,
+        comments: [
+          {
+            id: '8',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Dui ut ornare lectus sit.'
+          },
+          {
+            id: '9',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          }
+        ],
         heart: [1],
         script: `requireComponent.keys().forEach((fileName) => {
   const componentConfig = requireComponent(fileName)
@@ -184,7 +233,23 @@ return go(f, seed, [])
         borderColor: '#238B59',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
-        comments: 1,
+        comments: [
+          {
+            id: '10',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque mauris pellentesque pulvinar pellentesque habitant.'
+          },
+          {
+            id: '11',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          },
+          {
+            id: '12',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          }
+        ],
         heart: [1, 2, 3, 4, 5, 6],
         script: `<body>
   <b>Negrito<b/>
@@ -206,7 +271,28 @@ return go(f, seed, [])
         borderColor: '#FFFFFF',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
-        comments: 12,
+        comments: [
+          {
+            id: '13',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Dui ut ornare lectus sit.'
+          },
+          {
+            id: '14',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium quam vulputate dignissim suspendisse in est ante in nibh. Ultrices neque ornare aenean euismod elementum nisi quis eleifend.'
+          },
+          {
+            id: '15',
+            comment:
+              'diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet enim tortor at auctor urna nunc id cursus metus aliquam'
+          },
+          {
+            id: '16',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing.'
+          }
+        ],
         heart: [1, 3, 5, 6],
         script: `.colorpicker {
   height: 48px;
@@ -231,7 +317,38 @@ return go(f, seed, [])
         borderColor: '#BABACA',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
-        comments: 11,
+        comments: [
+          {
+            id: '21',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          },
+          {
+            id: '22',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Dui ut ornare lectus sit.'
+          },
+          {
+            id: '23',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pretium quam vulputate dignissim suspendisse in est ante in nibh. Ultrices neque ornare aenean euismod elementum nisi quis eleifend.'
+          },
+          {
+            id: '24',
+            comment:
+              'diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet enim tortor at auctor urna nunc id cursus metus aliquam'
+          },
+          {
+            id: '25',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing.'
+          },
+          {
+            id: '26',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          }
+        ],
         heart: [3, 5],
         script: `  mutations: {
   TOGGLE_DRAWER(state) {
@@ -259,7 +376,28 @@ return go(f, seed, [])
         borderColor: '#BABACA',
         description:
           'Lorem ipsum eleifend etiam eu ultricies vitae mauris amet ac, sit litora est faucibus rhoncus at vitae purus, quam in pulvinar rhoncus class turpis etiam cubilia. ac elit vel, nisi. ',
-        comments: 11,
+        comments: [
+          {
+            id: '17',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          },
+          {
+            id: '18',
+            comment:
+              'vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit amet mattis vulputate enim'
+          },
+          {
+            id: '19',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque mauris pellentesque pulvinar pellentesque habitant.'
+          },
+          {
+            id: '20',
+            comment:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          }
+        ],
         heart: [1, 2, 3, 5],
         script: `actions: {
   toggleDrawer({ commit }) {
@@ -309,7 +447,6 @@ return go(f, seed, [])
       await delay()
       commit('SET_LOADING', false)
       commit('ADD_PROJECT', payload)
-
     },
     toggleHeart({ commit }, payload) {
       commit('TOGGLE_HEART', payload)

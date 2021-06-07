@@ -13,7 +13,7 @@
       >
         <project-reactions
           reactionType="comments"
-          :itemCount="project.comments"
+          :itemCount="project.comments.length"
           @action="goToComments(project.id)"
         ></project-reactions>
         <project-reactions
