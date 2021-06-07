@@ -3,8 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const delay = (amount = 2000) => new Promise(resolve => setTimeout(resolve, amount))
+
 export default new Vuex.Store({
   state: {
+    loading: false,
     drawer: null,
     languages: [
       { name: 'Javascript', id: 1, code: 'javascript', icon: 'javascript' },
@@ -289,6 +292,9 @@ return go(f, seed, [])
       } else {
         state.projects[index].heart.splice(check, 1)
       }
+    },
+    SET_LOADING(state, payload) {
+      state.loading = payload
     }
   },
   actions: {
@@ -298,10 +304,12 @@ return go(f, seed, [])
     changeEditorBorderColor({ commit }, payload) {
       commit('CHANGE_EDITOR_BORDER_COLOR', payload)
     },
-    addProject({ commit }, payload) {
-      return new Promise(() => {
-        commit('ADD_PROJECT', payload)
-      })
+    async addProject({ commit }, payload) {
+      commit('SET_LOADING', true)
+      await delay()
+      commit('SET_LOADING', false)
+      commit('ADD_PROJECT', payload)
+
     },
     toggleHeart({ commit }, payload) {
       commit('TOGGLE_HEART', payload)

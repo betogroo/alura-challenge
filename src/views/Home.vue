@@ -39,7 +39,7 @@ export default {
   }),
 
   computed: {
-    ...mapState(['loggedUser'])
+    ...mapState(['loggedUser', 'loading'])
   },
 
   methods: {
@@ -49,12 +49,13 @@ export default {
     updateColor(data) {
       this.project.borderColor = data
     },
-    addProject(project) {
+    async addProject(project) {
       project.id = Date.now()
       project.idUser = this.loggedUser.id
       project.comments = 0
       project.heart = []
-      this.$store.dispatch('addProject', project)
+      await this.$store.dispatch('addProject', project)
+      this.$router.push({ name: 'Project', params: { id: project.id } })
     }
   }
 }
