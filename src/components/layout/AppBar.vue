@@ -19,25 +19,19 @@
         ></base-text-field>
       </template>
       <template v-if="$vuetify.breakpoint.xsOnly">
-        <v-btn icon dark class="ml-3" @click.stop="search = !search">
-          <v-icon size="32">{{ !search ? 'mdi-magnify' : 'mdi-close' }}</v-icon>
-        </v-btn>
+        <base-btn-icon
+          :icon="!search ? 'magnify' : 'close'"
+          @action="toggleSearch"
+        />
       </template>
 
       <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
       <template v-if="$vuetify.breakpoint.mdAndDown">
         <v-app-bar-nav-icon class="pl-2">
-          <v-btn
-            v-ripple="false"
-            text
-            width="38"
-            height="38"
-            color="white"
-            icon
-            @click.stop="toggleDrawer"
-          >
-            <v-icon size="30">{{ !drawer ? 'mdi-menu' : 'mdi-close' }}</v-icon>
-          </v-btn>
+          <base-btn-icon
+            :icon="!drawer ? 'menu' : 'close'"
+            @action="toggleDrawer"
+          />
         </v-app-bar-nav-icon>
       </template>
       <template v-else>
@@ -145,6 +139,9 @@ export default {
     toggleDrawer() {
       this.drawer = !this.drawer
       this.search = false
+    },
+    toggleSearch() {
+      this.search = !this.search
     }
   }
 }
@@ -156,18 +153,5 @@ export default {
 }
 .drawer-text-active {
   opacity: inherit;
-}
-.v-icon.v-icon::after {
-  border-radius: 16px;
-}
-.v-btn {
-  background-color: transparent;
-}
-.v-btn:before {
-  border-radius: 8px;
-  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.6, 1);
-}
-.theme--light.v-btn:focus::before {
-  opacity: 0.16;
 }
 </style>
