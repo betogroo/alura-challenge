@@ -10,6 +10,9 @@ import camelCase from 'lodash/camelCase'
 import VueCodeHighlight from 'vue-code-highlight'
 Vue.use(VueCodeHighlight)
 
+import VueHtml2Canvas from 'vue-html2canvas'
+Vue.use(VueHtml2Canvas)
+
 const requireComponent = require.context(
   './components/base',
   false,
