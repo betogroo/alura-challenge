@@ -67,7 +67,7 @@ export default {
     async addProject(project) {
       project.id = Date.now()
       project.idUser = this.loggedUser.id
-      project.comments = 0
+      project.comments = []
       project.heart = []
       await this.$store.dispatch('addProject', project)
       this.$router.replace({ name: 'Project', params: { id: project.id } })
