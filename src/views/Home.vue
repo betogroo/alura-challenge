@@ -1,5 +1,17 @@
 <template>
   <v-container class="pt-0">
+    <v-overlay :value="loading" light>
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
+    <v-snackbar v-model="snackbar">
+      Gravado com sucesso
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="closeSnackbar">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
     <v-row>
       <v-col cols="12" lg="8">
         <editor
@@ -39,7 +51,7 @@ export default {
   }),
 
   computed: {
-    ...mapState(['loggedUser', 'loading'])
+    ...mapState(['loggedUser', 'loading', 'snackbar'])
   },
 
   methods: {
@@ -49,13 +61,16 @@ export default {
     updateColor(data) {
       this.project.borderColor = data
     },
+    closeSnackbar() {
+      this.$store.dispatch('setSnackbar', false)
+    },
     async addProject(project) {
       project.id = Date.now()
       project.idUser = this.loggedUser.id
       project.comments = 0
       project.heart = []
       await this.$store.dispatch('addProject', project)
-      this.$router.push({ name: 'Project', params: { id: project.id } })
+      this.$router.replace({ name: 'Project', params: { id: project.id } })
     }
   }
 }

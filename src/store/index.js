@@ -9,6 +9,7 @@ const delay = (amount = 2000) =>
 export default new Vuex.Store({
   state: {
     loading: false,
+    snackbar: false,
     drawer: null,
     languages: [
       { name: 'Javascript', id: 1, code: 'javascript', icon: 'javascript' },
@@ -433,6 +434,9 @@ return go(f, seed, [])
     },
     SET_LOADING(state, payload) {
       state.loading = payload
+    },
+    SET_SNACKBAR(state, payload) {
+      state.snackbar = payload
     }
   },
   actions: {
@@ -444,12 +448,18 @@ return go(f, seed, [])
     },
     async addProject({ commit }, payload) {
       commit('SET_LOADING', true)
-      await delay()
+      await delay(750)
       commit('SET_LOADING', false)
+      commit('SET_SNACKBAR', true)
+      await delay(1000)
+      commit('SET_SNACKBAR', false)
       commit('ADD_PROJECT', payload)
     },
     toggleHeart({ commit }, payload) {
       commit('TOGGLE_HEART', payload)
+    },
+    setSnackbar({ commit }, payload) {
+      commit('SET_SNACKBAR', payload)
     }
   },
   getters: {
