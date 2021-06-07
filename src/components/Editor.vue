@@ -59,7 +59,7 @@
     </div>
     <div v-if="editable" class="mt-5 mx-1">
       <v-row>
-        <v-col :cols="isHighlight ? 10 : 12">
+        <v-col :cols="isHighlight ? 9 : 12">
           <base-btn-outlined dark block type="button" @click="toggleHighlight">
             {{ !isHighlight ? 'Visualizar com o Highlight' : 'Editar Código' }}
           </base-btn-outlined>
@@ -86,7 +86,7 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card class="pt-2">
-                <v-img max-width="640px" :src="output" />
+                <img width="100%" :src="output" />
               </v-card>
             </v-card>
           </v-dialog>
