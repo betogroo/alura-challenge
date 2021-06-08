@@ -59,7 +59,7 @@
     </div>
     <div v-if="editable" class="mt-5 mx-1">
       <v-row>
-        <v-col :cols="isHighlight ? 8 : 12">
+        <v-col :cols="isHighlight ? 9 : 12" lg="10">
           <base-btn-outlined dark block type="button" @click="toggleHighlight">
             {{ !isHighlight ? 'Visualizar com o Highlight' : 'Editar Código' }}
           </base-btn-outlined>
@@ -73,34 +73,50 @@
           >
             <template v-slot:activator="{ on, attrs }">
               <base-btn-icon
-                icon="share"
+                icon="download"
                 v-bind="attrs"
                 v-on="on"
                 @action="print"
               />
             </template>
-            <v-card>
-              <v-toolbar dark color="primary">
+            <v-card class="primary" dark>
+              <v-toolbar flat dark color="primary">
                 <base-btn-icon icon="close" @action="dialog = false" />
-                <v-toolbar-title>Compartilhar Código</v-toolbar-title>
+                <v-toolbar-title>Baixar Código</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-title> {{ project.title || 'Sem nome' }}</v-card-title>
-              <v-card-text class="pt-2">
+              <v-card-text color="primary" class="pt-2">
                 <img width="100%" :src="output" />
               </v-card-text>
               <v-card-actions>
-                <a :href="output" :download="`${Date.now()}.png`">Baixar</a>
+                <v-row>
+                  <v-col cols="6" xs="12">
+                    <v-btn
+                      block
+                      color="blue"
+                      tag="a"
+                      :href="output"
+                      :download="`${Date.now()}.png`"
+                      @click="print"
+                      ><v-icon left>mdi-download</v-icon>PNG</v-btn
+                    >
+                  </v-col>
+                  <v-col>
+                    <v-btn
+                      color="blue"
+                      block
+                      tag="a"
+                      :href="output"
+                      :download="`${Date.now()}.jpg`"
+                      @click="print"
+                      ><v-icon left>mdi-download</v-icon>JPG</v-btn
+                    >
+                  </v-col>
+                </v-row>
               </v-card-actions>
             </v-card>
           </v-dialog>
-          <v-btn
-            tag="a"
-            :href="output"
-            :download="`${Date.now()}.png`"
-            @click="print"
-            ><v-icon>mdi-download</v-icon></v-btn
-          >
         </v-col>
       </v-row>
     </div>

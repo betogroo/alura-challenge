@@ -1,6 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-btn
+      class="mr-2"
       depressed
       :type="type"
       :block="block"
