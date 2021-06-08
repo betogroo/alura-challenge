@@ -59,7 +59,7 @@
     </div>
     <div v-if="editable" class="mt-5 mx-1">
       <v-row>
-        <v-col :cols="isHighlight ? 9 : 12">
+        <v-col :cols="isHighlight ? 8 : 12">
           <base-btn-outlined dark block type="button" @click="toggleHighlight">
             {{ !isHighlight ? 'Visualizar com o Highlight' : 'Editar Código' }}
           </base-btn-outlined>
@@ -85,11 +85,22 @@
                 <v-toolbar-title>Compartilhar Código</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
-              <v-card class="pt-2">
+              <v-card-title> {{ project.title || 'Sem nome' }}</v-card-title>
+              <v-card-text class="pt-2">
                 <img width="100%" :src="output" />
-              </v-card>
+              </v-card-text>
+              <v-card-actions>
+                <a :href="output" :download="`${Date.now()}.png`">Baixar</a>
+              </v-card-actions>
             </v-card>
           </v-dialog>
+          <v-btn
+            tag="a"
+            :href="output"
+            :download="`${Date.now()}.png`"
+            @click="print"
+            ><v-icon>mdi-download</v-icon></v-btn
+          >
         </v-col>
       </v-row>
     </div>
