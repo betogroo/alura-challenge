@@ -1,3 +1,4 @@
+<img src="src/assets/screen/first_badge_alura_challenge.png" alt="vue.js" width="50" height="50"/>
 <h1> 
  Alura Challenge Front-end
 </h1>
